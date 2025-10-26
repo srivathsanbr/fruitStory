@@ -1,8 +1,7 @@
 
 # Fruit Story — Static Website
 
-**Owned by:** Swara Exports  
-**Imports from: Swara Ascent IMPEX**  
+**Owned by: Swara Ascent IMPEX**
 **Orders:** Call +918870916226 or WhatsApp +918870916226
 
 ## Structure
