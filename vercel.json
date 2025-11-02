@@ -1,0 +1,15 @@
+{
+  "functions": {
+    "api/catalog.js": { "memory": 128, "maxDuration": 10 }
+  },
+  "headers": [
+    {
+      "source": "/api/catalog",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,PUT,OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, x-admin-key" }
+      ]
+    }
+  ]
+}

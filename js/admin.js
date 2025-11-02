@@ -2,7 +2,7 @@
 const PASSWORD = 'FruitStory@admin';
 let catalog = []; let unlocked = false;
 async function loadCatalog() {
-  const res = await fetch('./catalog/catalog.json?v=2', { cache: 'no-store' });
+  const res = await fetch('./catalog/catalog.json?v=4', { cache: 'no-store' });
   if (!res.ok) throw new Error('Failed to load catalog.json');
   return await res.json();
 }

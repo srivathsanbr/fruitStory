@@ -1,14 +1,14 @@
 
 async function loadCatalog() {
-  const res = await fetch('./catalog/catalog.json?v=2', { cache: 'no-store' });
+  const res = await fetch('./catalog/catalog.json?v=4', { cache: 'no-store' });
   if(!res.ok) throw new Error('Failed to load catalog.json');
   return await res.json();
 }
 function whatsappLink(item) {
   const msg = encodeURIComponent(`Hi Fruit Story, I want to order: ${item.name} (${item.unit}) – please confirm availability & price.`);
-  return `https://wa.me/+918870916226?text=${msg}`;
+  return `https://wa.me/+919600785855?text=${msg}`;
 }
-function callLink() { return 'tel:+918870916226'; }
+function callLink() { return 'tel:+919790976381'; }
 function render(items) {
   const grid = document.getElementById('grid'); grid.innerHTML = '';
   items.forEach(item => {
