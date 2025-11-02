@@ -14,22 +14,32 @@ export default async function handler(req, res) {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    return res.status(500).json({ error: 'Missing BLOB_READ_WRITE_TOKEN env var.' });
+  }
+
   if (req.method === 'GET') {
     try {
       const h = await head(FILE_PATH, { token: process.env.BLOB_READ_WRITE_TOKEN });
-      if (!h?.url) return res.status(200).json([]);
-      const r = await fetch(h.url, { cache: 'no-store' });
-      const json = await r.json();
-      return res.status(200).json(json);
-    } catch (e) {
-      return res.status(200).json([]);
+      if (h?.url) {
+        const r = await fetch(h.url, { cache: 'no-store' });
+        if (!r.ok) return res.status(502).json({ error: `Blob fetch error ${r.status}` });
+        const json = await r.json();
+        return res.status(200).json(json);
+      }
+      return res.status(200).json([]); // first-time: empty list
+    } catch {
+      return res.status(200).json([]); // safe fallback
     }
   }
 
   if (req.method === 'PUT') {
     const key = req.headers['x-admin-key'];
-    if (!process.env.ADMIN_SECRET || key !== process.env.ADMIN_SECRET) {
-      return res.status(401).json({ error: 'Unauthorized' });
+    if (!process.env.ADMIN_SECRET) {
+      return res.status(500).json({ error: 'Missing ADMIN_SECRET env var.' });
+    }
+    if (key !== process.env.ADMIN_SECRET) {
+      return res.status(401).json({ error: 'Unauthorized: ADMIN_SECRET mismatch.' });
     }
 
     let payload;
@@ -40,21 +50,28 @@ export default async function handler(req, res) {
     }
 
     if (!Array.isArray(payload)) {
-      return res.status(400).json({ error: 'Payload must be an array' });
+      return res.status(400).json({ error: 'Payload must be an array of items.' });
     }
     const ok = payload.every(x => x && typeof x === 'object' && x.id && x.name);
     if (!ok) {
       return res.status(400).json({ error: 'Each item must include at least { id, name }' });
     }
 
-    const result = await put(FILE_PATH, JSON.stringify(payload, null, 2), {
-      access: 'public',
-      contentType: 'application/json',
-      token: process.env.BLOB_READ_WRITE_TOKEN,
-      addRandomSuffix: false
-    });
-
-    return res.status(200).json({ ok: true, url: result.url });
+    try {
+      const result = await put(
+        FILE_PATH,
+        JSON.stringify(payload, null, 2),
+        {
+          access: 'public',
+          contentType: 'application/json',
+          token: process.env.BLOB_READ_WRITE_TOKEN,
+          addRandomSuffix: false
+        }
+      );
+      return res.status(200).json({ ok: true, url: result.url });
+    } catch {
+      return res.status(500).json({ error: 'Blob put failed. Check token scope/project.' });
+    }
   }
 
   return res.status(405).json({ error: 'Method not allowed' });
