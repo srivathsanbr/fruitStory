@@ -69,8 +69,11 @@ export default async function handler(req, res) {
         }
       );
       return res.status(200).json({ ok: true, url: result.url });
-    } catch {
-      return res.status(500).json({ error: 'Blob put failed. Check token scope/project.' });
+    } catch(e) {
+      const msg = e?.message || String(e);
+  return res.status(500).json({
+    error: `Blob put failed: ${msg}. Check token scope/project & that it's Read & Write.`
+  });
     }
   }
 
