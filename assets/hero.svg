@@ -1,15 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="680" viewBox="0 0 1400 680">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#ecfccb"/>
-      <stop offset="100%" stop-color="#fef9c3"/>
+      <stop offset="0%" stop-color="#fff7ed"/>
+      <stop offset="100%" stop-color="#ecfccb"/>
     </linearGradient>
   </defs>
-  <rect width="1200" height="600" fill="url(#bg)"/>
-  <g opacity="0.25">
-    <circle cx="200" cy="200" r="120" fill="#86efac"/>
-    <circle cx="1000" cy="160" r="160" fill="#fde68a"/>
-    <circle cx="900" cy="480" r="200" fill="#fca5a5"/>
-    <circle cx="320" cy="460" r="160" fill="#93c5fd"/>
+  <rect width="1400" height="680" fill="url(#bg)"/>
+  <!-- Apple -->
+  <g transform="translate(220,200)">
+    <circle cx="0" cy="0" r="70" fill="#ef4444"/>
+    <circle cx="60" cy="0" r="70" fill="#dc2626"/>
+    <rect x="28" y="-105" width="12" height="40" rx="6" fill="#374151"/>
+    <path d="M40 -110 C 60 -120, 80 -110, 86 -90 C 74 -92, 58 -86, 40 -90 Z" fill="#22c55e"/>
+  </g>
+  <!-- Banana -->
+  <g transform="translate(1080,210) rotate(-20)">
+    <path d="M0 0 C 160 -40, 240 60, 300 120 C 230 130, 160 120, 80 80 C 60 70, 20 30, 0 0 Z" fill="#fbbf24"/>
+    <path d="M10 10 C 150 -20, 230 70, 285 115" stroke="#f59e0b" stroke-width="10" fill="none"/>
+  </g>
+  <!-- Blueberries -->
+  <g transform="translate(320,520)">
+    <circle cx="0" cy="0" r="28" fill="#3b82f6"/>
+    <circle cx="40" cy="-10" r="28" fill="#2563eb"/>
+    <circle cx="24" cy="26" r="28" fill="#60a5fa"/>
+  </g>
+  <!-- Citrus -->
+  <g transform="translate(1220,520)">
+    <circle cx="0" cy="0" r="70" fill="#f97316"/>
+    <circle cx="0" cy="0" r="56" fill="#fed7aa"/>
   </g>
 </svg>
