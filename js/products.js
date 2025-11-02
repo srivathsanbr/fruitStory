@@ -1,12 +1,11 @@
-
 async function loadCatalog() {
-  const res = await fetch('./catalog/catalog.json?v=4', { cache: 'no-store' });
-  if(!res.ok) throw new Error('Failed to load catalog.json');
+  const res = await fetch('/api/catalog', { cache: 'no-store' });
+  if(!res.ok) throw new Error('Failed to load catalog');
   return await res.json();
 }
 function whatsappLink(item) {
   const msg = encodeURIComponent(`Hi Fruit Story, I want to order: ${item.name} (${item.unit}) – please confirm availability & price.`);
-  return `https://wa.me/+919600785855?text=${msg}`;
+  return `https://wa.me/919600785855?text=${msg}`;
 }
 function callLink() { return 'tel:+919790976381'; }
 function render(items) {
@@ -31,9 +30,9 @@ function render(items) {
   });
 }
 function applyFilters(data) {
-  const q = document.getElementById('search').value.trim().toLowerCase();
-  const type = document.getElementById('type').value;
-  const sort = document.getElementById('sort').value;
+  const q = (document.getElementById('search')?.value || '').trim().toLowerCase();
+  const type = document.getElementById('type')?.value || '';
+  const sort = document.getElementById('sort')?.value || '';
   let items = data.filter(x => {
     const hay = (x.name + ' ' + (x.description||'') + ' ' + (x.origin||'') + ' ' + (x.type||'')).toLowerCase();
     const matchesQ = !q || hay.includes(q);
@@ -48,6 +47,25 @@ function applyFilters(data) {
 }
 window.addEventListener('DOMContentLoaded', async () => {
   const data = await loadCatalog();
-  ['search','type','sort'].forEach(id => document.getElementById(id).addEventListener('input', () => applyFilters(data)));
+  ['search','type','sort'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => applyFilters(data));
+  });
+  // Build the filter UI if missing (for minimal markup usage)
+  const container = document.querySelector('.section .container') || document.querySelector('.container.section') || document.querySelector('.container');
+  if (document.getElementById('grid') && !document.getElementById('search')) {
+    const toolbar = document.createElement('div');
+    toolbar.style.cssText = 'display:flex;gap:10px;flex-wrap:wrap;margin:12px 0';
+    toolbar.innerHTML = `
+      <input id="search" class="input" placeholder="Search fruits, e.g., mango, blueberry, dragon..."/>
+      <select id="type" class="select">
+        <option value="">All Types</option><option value="import">Imports</option><option value="regional">Regional</option><option value="organic">Organic</option>
+      </select>
+      <select id="sort" class="select">
+        <option value="">Sort</option><option value="name-asc">Name A→Z</option><option value="name-desc">Name Z→A</option><option value="price-asc">Price Low→High</option><option value="price-desc">Price High→Low</option>
+      </select>`;
+    document.querySelector('.container.section')?.insertBefore(toolbar, document.getElementById('grid'));
+    ['search','type','sort'].forEach(id => document.getElementById(id).addEventListener('input', () => applyFilters(data)));
+  }
   applyFilters(data);
 });

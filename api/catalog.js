@@ -1,10 +1,10 @@
 // api/catalog.js
 import { put, head } from '@vercel/blob';
 
-const FILE_PATH = 'catalog/catalog.json'; // stays stable (no random suffix)
+const FILE_PATH = 'catalog/catalog.json';
 
 function cors(res) {
-  res.setHeader('Access-Control-Allow-Origin', '*'); // same-origin in Vercel is fine, keep * for simplicity
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-admin-key');
 }
@@ -12,12 +12,9 @@ function cors(res) {
 export default async function handler(req, res) {
   cors(res);
 
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
+  if (req.method === 'OPTIONS') return res.status(200).end();
 
   if (req.method === 'GET') {
-    // Try to read the existing blob; if missing, serve empty list
     try {
       const h = await head(FILE_PATH, { token: process.env.BLOB_READ_WRITE_TOKEN });
       if (!h?.url) return res.status(200).json([]);
@@ -25,13 +22,11 @@ export default async function handler(req, res) {
       const json = await r.json();
       return res.status(200).json(json);
     } catch (e) {
-      // If the file doesn't exist yet, return empty array
       return res.status(200).json([]);
     }
   }
 
   if (req.method === 'PUT') {
-    // Admin guard (simple shared secret)
     const key = req.headers['x-admin-key'];
     if (!process.env.ADMIN_SECRET || key !== process.env.ADMIN_SECRET) {
       return res.status(401).json({ error: 'Unauthorized' });
@@ -44,7 +39,6 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Invalid JSON' });
     }
 
-    // Very light validation: must be an array of items with id + name
     if (!Array.isArray(payload)) {
       return res.status(400).json({ error: 'Payload must be an array' });
     }
@@ -53,7 +47,6 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Each item must include at least { id, name }' });
     }
 
-    // Write to Vercel Blob (public so the function can read it quickly)
     const result = await put(FILE_PATH, JSON.stringify(payload, null, 2), {
       access: 'public',
       contentType: 'application/json',
