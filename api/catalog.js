@@ -27,7 +27,7 @@ export default async function handler(req, res) {
         const json = await r.json();
         return res.status(200).json(json);
       }
-      return res.status(200).json([]); // first-time: empty list
+      return res.status(200).json([]); // first time: empty list
     } catch {
       return res.status(200).json([]); // safe fallback
     }
@@ -58,7 +58,8 @@ export default async function handler(req, res) {
     }
 
     try {
-      const result = await put(
+      // 1) Write main file (overwrite same key)
+      const main = await put(
         FILE_PATH,
         JSON.stringify(payload, null, 2),
         {
@@ -66,15 +67,29 @@ export default async function handler(req, res) {
           contentType: 'application/json',
           token: process.env.BLOB_READ_WRITE_TOKEN,
           addRandomSuffix: false,
-          allowOverwrite: true   // <--- key fix
+          allowOverwrite: true
         }
       );
-      return res.status(200).json({ ok: true, url: result.url });
+
+      // 2) Snapshot a history backup (immutable)
+      const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const histKey = `catalog/history/catalog-${stamp}.json`;
+      await put(
+        histKey,
+        JSON.stringify(payload, null, 2),
+        {
+          access: 'public',
+          contentType: 'application/json',
+          token: process.env.BLOB_READ_WRITE_TOKEN,
+          addRandomSuffix: false,
+          allowOverwrite: false
+        }
+      );
+
+      return res.status(200).json({ ok: true, url: main.url, history: histKey });
     } catch (e) {
       const msg = e?.message || String(e);
-      return res.status(500).json({
-        error: `Blob put failed: ${msg}.`
-      });
+      return res.status(500).json({ error: `Blob put failed: ${msg}.` });
     }
   }
 

@@ -23,7 +23,7 @@
 
   <section class="container section">
     <h1>Admin Catalog Editor</h1>
-    <p class="small">Unlock the panel, add items, then click <b>Save to server</b>. You’ll be prompted once for the Vercel <code>ADMIN_SECRET</code>.</p>
+    <p class="small">Unlock, add/edit items, then click <b>Save to server</b>. On first save you’ll enter the Vercel <code>ADMIN_SECRET</code>.</p>
 
     <div class="card">
       <label class="small">Admin password</label>
@@ -31,7 +31,6 @@
       <button id="unlock" class="btn" style="margin-top:8px">Unlock</button>
     </div>
 
-    <!-- Panel is hidden until unlocked -->
     <div id="panel" style="display:none">
       <div class="card" style="margin-top:12px">
         <h3 style="margin-top:0">Add / Update Item</h3>
@@ -54,10 +53,11 @@
         <div class="actions">
           <button id="save" class="btn btn-primary">Save Item</button>
           <button id="save-server" class="btn">Save to server</button>
+          <button id="load-server" class="btn">Load from server</button>
           <button id="download" class="btn">Download JSON</button>
           <button id="copy" class="btn">Copy JSON</button>
         </div>
-        <p class="small" style="margin-top:8px">Env vars required on Vercel: <code>BLOB_READ_WRITE_TOKEN</code> (Read &amp; Write) and <code>ADMIN_SECRET</code>.</p>
+        <p class="small" style="margin-top:8px">Vercel env vars required: <code>BLOB_READ_WRITE_TOKEN</code> (Read & Write) and <code>ADMIN_SECRET</code>.</p>
       </div>
 
       <div class="card" style="margin-top:12px">

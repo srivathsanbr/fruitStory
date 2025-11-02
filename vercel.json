@@ -1,6 +1,7 @@
 {
   "functions": {
-    "api/catalog.js": { "memory": 128, "maxDuration": 10 }
+    "api/catalog.js": { "memory": 128, "maxDuration": 10 },
+    "api/blob-selftest.js": { "memory": 128, "maxDuration": 10 }
   },
   "headers": [
     {

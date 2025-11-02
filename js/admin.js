@@ -28,15 +28,16 @@ function fillForm(item){
 }
 
 function formItem(){
+  const $ = (id) => document.getElementById(id);
   return{
-    id: id.value.trim(),
-    name: name.value.trim(),
-    price: Number(price.value||0),
-    unit: unit.value.trim(),
-    type: type.value,
-    origin: origin.value.trim(),
-    img: img.value.trim(),
-    description: desc.value.trim()
+    id: $('id').value.trim(),
+    name: $('name').value.trim(),
+    price: Number($('price').value || 0),
+    unit: $('unit').value.trim(),
+    type: $('type').value,
+    origin: $('origin').value.trim(),
+    img: $('img').value.trim(),
+    description: $('desc').value.trim()
   };
 }
 
@@ -58,17 +59,25 @@ async function copyJSON(){
   catch(e){ alert('Clipboard copy failed.'); }
 }
 
-// ==== FIXED: robust save with visible errors ====
+async function reloadFromServer() {
+  try { catalog = await loadCatalog(); renderTable(); alert('Loaded latest catalog from server.'); }
+  catch { alert('Failed to load from server.'); }
+}
+
+// Robust save with clear error messages and double-click guard
 async function saveToServer(){
   if (!window.__ADMIN_KEY__) {
     const k = prompt('Enter admin server key (Vercel ADMIN_SECRET):');
     if (!k) return alert('Admin key required.');
     window.__ADMIN_KEY__ = k;
   }
-  if (!Array.isArray(catalog)) {
-    alert('Catalog must be an array. Try reloading admin and adding an item.');
-    return;
+
+  if (!Array.isArray(catalog)) return alert('Catalog must be an array.');
+  if (catalog.length === 0) {
+    const ok = confirm('Catalog is empty. Overwrite server with an empty list?');
+    if (!ok) return;
   }
+
   const btn = document.getElementById('save-server');
   const origText = btn?.textContent;
   try{
@@ -80,11 +89,7 @@ async function saveToServer(){
     });
     const raw = await res.text();
     let data; try { data = raw ? JSON.parse(raw) : {}; } catch { data = { error: raw || 'Unknown error' }; }
-    if (!res.ok) {
-      if (res.status === 401) throw new Error(data.error || 'Unauthorized: ADMIN_SECRET mismatch.');
-      if (res.status === 500 && /BLOB_READ_WRITE_TOKEN/i.test(data.error||'')) throw new Error('Server missing BLOB_READ_WRITE_TOKEN env var on Vercel.');
-      throw new Error(data.error || `HTTP ${res.status}`);
-    }
+    if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
     alert('Saved to server ✅');
   } catch (e) {
     console.error('Save failed:', e);
@@ -95,7 +100,6 @@ async function saveToServer(){
 }
 
 window.addEventListener('DOMContentLoaded', async () =>{
-  // Wire up all buttons (and verify elements exist)
   document.getElementById('unlock')?.addEventListener('click', async ()=>{
     if (document.getElementById('pwd').value !== PASSWORD) return alert('Wrong password');
     document.getElementById('panel').style.display='block';
@@ -111,7 +115,5 @@ window.addEventListener('DOMContentLoaded', async () =>{
   document.getElementById('download')?.addEventListener('click', downloadJSON);
   document.getElementById('copy')?.addEventListener('click', copyJSON);
   document.getElementById('save-server')?.addEventListener('click', saveToServer);
-
-  // Debug helpers: comment in if needed
-  // console.log('save-server exists?', !!document.getElementById('save-server'));
+  document.getElementById('load-server')?.addEventListener('click', reloadFromServer);
 });
