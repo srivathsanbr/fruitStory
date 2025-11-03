@@ -1,28 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <script type="application/ld+json" id="catalog-ld"></script>
-  <script>
-  (async ()=>{
-    const r = await fetch('/api/catalog',{cache:'no-store'});
-    const items = await r.json();
-    const ld = {
-      "@context":"https://schema.org",
-      "@type":"ItemList",
-      "itemListElement": items.map((p,i)=>({
-        "@type":"ListItem","position":i+1,
-        "item":{
-          "@type":"Product","name":p.name,
-          "image":p.img||"https://fruitstory.org/assets/hero.svg",
-          "description":p.description||"",
-          "brand":"Fruit Story",
-          "offers":{"@type":"Offer","priceCurrency":"INR","price":String(p.price||""),"availability":"https://schema.org/InStock","url":"https://fruitstory.org/products.html"}
-        }
-      }))
-    };
-    document.getElementById('catalog-ld').textContent = JSON.stringify(ld);
-  })();
-  </script>
+  
 
   <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
   <!-- Google Tag Manager -->
@@ -52,6 +31,28 @@
 
   <link rel="stylesheet" href="./styles.css"/><link rel="icon" href="./assets/logo.png"/>
   <script defer src="./js/products.js"></script>
+  <script type="application/ld+json" id="catalog-ld"></script>
+  <script>
+  (async ()=>{
+    const r = await fetch('/api/catalog',{cache:'no-store'});
+    const items = await r.json();
+    const ld = {
+      "@context":"https://schema.org",
+      "@type":"ItemList",
+      "itemListElement": items.map((p,i)=>({
+        "@type":"ListItem","position":i+1,
+        "item":{
+          "@type":"Product","name":p.name,
+          "image":p.img||"https://fruitstory.org/assets/hero.svg",
+          "description":p.description||"",
+          "brand":"Fruit Story",
+          "offers":{"@type":"Offer","priceCurrency":"INR","price":String(p.price||""),"availability":"https://schema.org/InStock","url":"https://fruitstory.org/products.html"}
+        }
+      }))
+    };
+    document.getElementById('catalog-ld').textContent = JSON.stringify(ld);
+  })();
+  </script>
 </head>
 <body>
   <!-- Google tag (gtag.js) -->
