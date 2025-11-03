@@ -1,9 +1,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-  
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <!-- Consent defaults MUST be before GTM -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    // Analytics allowed; ads off by default
+    gtag('consent','default',{
+      ad_user_data:'denied',
+      ad_personalization:'denied',
+      ad_storage:'denied',
+      analytics_storage:'granted'
+    });
+  </script>
+
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -11,63 +24,39 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-MP7MRG4T');</script>
   <!-- End Google Tag Manager -->
-  <title>Fruit Story · Exotic Fresh Organic Fruits in South India</title>
-  <meta name="description" content="Direct-to-consumer export-grade fruits. Order via WhatsApp or call. Fresh imports + regional premium fruits with strict quality checks." />
-  <link rel="canonical" href="https://fruitstory.org/" />
+
+  <title>Catalog · Fruit Story</title>
+  <meta name="description" content="Browse Fruit Story’s export-grade imports and premium regional fruits. Order via WhatsApp or call." />
+  <link rel="canonical" href="https://fruitstory.org/products.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Fruit Story · Exotic Fresh Organic Fruits" />
+  <meta property="og:title" content="Catalog · Fruit Story" />
   <meta property="og:description" content="Export-grade fruits delivered fresh. Order via WhatsApp or call." />
-  <meta property="og:url" content="https://fruitstory.org/" />
+  <meta property="og:url" content="https://fruitstory.org/products.html" />
   <meta property="og:image" content="https://fruitstory.org/assets/og-cover.jpg" />
   <meta property="og:site_name" content="Fruit Story" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Fruit Story · Exotic Fresh Organic Fruits" />
+  <meta name="twitter:title" content="Catalog · Fruit Story" />
   <meta name="twitter:description" content="Export-grade fruits delivered fresh. Order via WhatsApp or call." />
   <meta name="twitter:image" content="https://fruitstory.org/assets/og-cover.jpg" />
 
-  <link rel="stylesheet" href="./styles.css"/><link rel="icon" href="./assets/logo.png"/>
-  <script defer src="./js/products.js"></script>
+  <link rel="stylesheet" href="./styles.css"/>
+  <link rel="icon" href="./assets/logo.png"/>
+
+  <!-- JSON-LD placeholder (filled later) -->
   <script type="application/ld+json" id="catalog-ld"></script>
-  <script>
-  (async ()=>{
-    const r = await fetch('/api/catalog',{cache:'no-store'});
-    const items = await r.json();
-    const ld = {
-      "@context":"https://schema.org",
-      "@type":"ItemList",
-      "itemListElement": items.map((p,i)=>({
-        "@type":"ListItem","position":i+1,
-        "item":{
-          "@type":"Product","name":p.name,
-          "image":p.img||"https://fruitstory.org/assets/hero.svg",
-          "description":p.description||"",
-          "brand":"Fruit Story",
-          "offers":{"@type":"Offer","priceCurrency":"INR","price":String(p.price||""),"availability":"https://schema.org/InStock","url":"https://fruitstory.org/products.html"}
-        }
-      }))
-    };
-    document.getElementById('catalog-ld').textContent = JSON.stringify(ld);
-  })();
-  </script>
+
+  <script defer src="./js/products.js"></script>
 </head>
 <body>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-276K70GXBX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MP7MRG4T"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
-    gtag('config', 'G-276K70GXBX');
-  </script>
-   <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MP7MRG4T"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
   <header class="container nav">
     <div class="brand">
       <img src="./assets/logo.png" alt="Fruit Story logo"/>
@@ -107,9 +96,49 @@
   <footer class="footer">
     <div class="container">
       <div class="small">© Fruit Story · Swara Ascent IMPEX</div>
-      <div class="small">Orders via call/WhatsApp only · <a href="https://wa.me/919600785855?text=Hi%20Fruit%20Story%2C%20I%20want%20to%20order%20fruits." target="_blank" rel="noopener">Start WhatsApp</a></div>
+      <div class="small">
+        Orders via call/WhatsApp only ·
+        <!-- Use the /w bridge with UTMs so GA4 sees attribution -->
+        <a href="/w/?utm_source=products&utm_medium=link&utm_campaign=order&loc=footer&m=Hi%20Fruit%20Story%2C%20I%20want%20to%20order%20fruits."
+           target="_blank" rel="noopener">Start WhatsApp</a>
+      </div>
       <div class="small">Instagram: <a target="_blank" rel="noopener" href="https://instagram.com/Fruitstory.co">Fruitstory.co</a></div>
     </div>
   </footer>
+
+  <!-- Build Product ItemList JSON-LD from live catalog (safer at end of body) -->
+  <script>
+  (async ()=>{
+    try {
+      const r = await fetch('/api/catalog',{cache:'no-store'});
+      const items = await r.json();
+
+      const itemList = items.map((p,i)=>{
+        const product = {
+          "@type":"Product",
+          "name": p.name || "",
+          "image": p.img || "https://fruitstory.org/assets/hero.svg",
+          "description": p.description || "",
+          "brand": "Fruit Story"
+        };
+        if (p.price != null && p.price !== "") {
+          product.offers = {
+            "@type":"Offer",
+            "priceCurrency":"INR",
+            "price": String(p.price),
+            "availability":"https://schema.org/InStock",
+            "url":"https://fruitstory.org/products.html"
+          };
+        }
+        return { "@type":"ListItem", "position": i+1, "item": product };
+      });
+
+      const ld = { "@context":"https://schema.org", "@type":"ItemList", "itemListElement": itemList };
+      document.getElementById('catalog-ld').textContent = JSON.stringify(ld);
+    } catch(e) {
+      /* optional: console.warn('LD build failed', e); */
+    }
+  })();
+  </script>
 </body>
 </html>
