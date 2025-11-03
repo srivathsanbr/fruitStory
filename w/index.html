@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8">
+<title>Redirecting…</title>
+<script>
+(function(){
+  window.dataLayer = window.dataLayer || [];
+  const p = new URLSearchParams(location.search);
+  const msg = p.get('m') || 'Hi Fruit Story, I want to order fruits.';
+  const dest = 'https://wa.me/919600785855?text='+encodeURIComponent(msg);
+
+  // Log an event so GA4/GTM captures the campaign/UTM BEFORE redirect
+  window.dataLayer.push({
+    event: 'whatsapp_redirect',
+    source: p.get('utm_source'),
+    medium: p.get('utm_medium'),
+    campaign: p.get('utm_campaign'),
+    loc: p.get('loc') || 'unknown'
+  });
+
+  setTimeout(()=>location.replace(dest), 100);
+})();
+</script>
+<body>Redirecting to WhatsApp…</body>

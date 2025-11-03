@@ -1,0 +1,97 @@
+{
+  "exportFormatVersion": 2,
+  "exportTime": "2025-11-03T00:00:00Z",
+  "containerVersion": {
+    "container": {
+      "publicId": "GTM-MP7MRG4T",
+      "name": "Fruit Story"
+    },
+    "tag": [
+      {
+        "name": "GA4 - Configuration",
+        "type": "gaawc",
+        "parameter": [
+          { "key": "measurementId", "value": { "type": "TEMPLATE", "value": "G-276K70GXBX" } }
+        ],
+        "firingTriggerId": [ "2147479551" ]
+      },
+      {
+        "name": "GA4 - Event - WhatsApp Click",
+        "type": "gaawce",
+        "parameter": [
+          { "key": "eventName", "value": { "type": "TEMPLATE", "value": "cta_whatsapp_click" } }
+        ],
+        "firingTriggerId": [ "3" ]
+      },
+      {
+        "name": "GA4 - Event - Call Click",
+        "type": "gaawce",
+        "parameter": [
+          { "key": "eventName", "value": { "type": "TEMPLATE", "value": "cta_call_click" } }
+        ],
+        "firingTriggerId": [ "4" ]
+      },
+      {
+        "name": "GA4 - Event - Instagram Click",
+        "type": "gaawce",
+        "parameter": [
+          { "key": "eventName", "value": { "type": "TEMPLATE", "value": "cta_instagram_click" } }
+        ],
+        "firingTriggerId": [ "5" ]
+      },
+      {
+        "name": "GA4 - Event - WhatsApp Redirect (Bridge)",
+        "type": "gaawce",
+        "parameter": [
+          { "key": "eventName", "value": { "type": "TEMPLATE", "value": "whatsapp_redirect" } }
+        ],
+        "firingTriggerId": [ "6" ]
+      }
+    ],
+    "trigger": [
+      {
+        "triggerId": "2147479551",
+        "name": "All Pages",
+        "type": "PAGEVIEW"
+      },
+      {
+        "triggerId": "3",
+        "name": "Click - WhatsApp (wa.me)",
+        "type": "CLICK_URL",
+        "filter": [
+          { "type": "MATCH_REGEX", "parameter": [ { "key": "arg0", "type": "TEMPLATE", "value": "{{Click URL}}" }, { "key": "arg1", "type": "TEMPLATE", "value": "wa\\.me|/w/\\?" } ] }
+        ],
+        "autoEventFilter": [ { "type": "EQUALS", "parameter": [ { "key": "arg0", "type": "TEMPLATE", "value": "{{Click Element}}"}, { "key": "arg1", "type": "TEMPLATE", "value": "A" } ] } ]
+      },
+      {
+        "triggerId": "4",
+        "name": "Click - Call (tel:)",
+        "type": "CLICK_URL",
+        "filter": [
+          { "type": "CONTAINS", "parameter": [ { "key": "arg0", "type": "TEMPLATE", "value": "{{Click URL}}" }, { "key": "arg1", "type": "TEMPLATE", "value": "tel:" } ] }
+        ]
+      },
+      {
+        "triggerId": "5",
+        "name": "Click - Instagram",
+        "type": "CLICK_URL",
+        "filter": [
+          { "type": "CONTAINS", "parameter": [ { "key": "arg0", "type": "TEMPLATE", "value": "{{Click URL}}" }, { "key": "arg1", "type": "TEMPLATE", "value": "instagram.com" } ] }
+        ]
+      },
+      {
+        "triggerId": "6",
+        "name": "Pageview - WhatsApp Bridge",
+        "type": "PAGEVIEW",
+        "filter": [
+          { "type": "CONTAINS", "parameter": [ { "key": "arg0", "type": "TEMPLATE", "value": "{{Page Path}}" }, { "key": "arg1", "type": "TEMPLATE", "value": "/w/" } ] }
+        ]
+      }
+    ],
+    "variable": [
+      { "name": "Click URL", "type": "aev", "parameter": [ { "key": "varType", "value": { "type": "TEMPLATE", "value": "URL" } } ] },
+      { "name": "Click Element", "type": "aev", "parameter": [ { "key": "varType", "value": { "type": "TEMPLATE", "value": "ELEMENT" } } ] },
+      { "name": "Page Path", "type": "aev", "parameter": [ { "key": "varType", "value": { "type": "TEMPLATE", "value": "PAGE_URL" } } ] }
+    ]
+  }
+}

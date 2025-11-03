@@ -41,10 +41,12 @@ async function loadCatalog() {
   return await res.json();
 }
 
-function whatsappLink(item) {
-  const msg = encodeURIComponent(`Hi Fruit Story, I want to order: ${item.name} (${item.unit}) – please confirm availability & price.`);
-  return `https://wa.me/919600785855?text=${msg}`;
+function whatsappLink(item){
+  const msg = `Hi Fruit Story, I want to order: ${item.name} (${item.unit||''}). Please confirm availability & price.`;
+  const m = encodeURIComponent(msg);
+  return `/w/?utm_source=products&utm_medium=button&utm_campaign=order&loc=card&m=${m}`;
 }
+
 function callLink() { return 'tel:+919790976381'; }
 
 function createImageEl(item) {
