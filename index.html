@@ -8,7 +8,6 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
-    // Analytics on, ads off by default
     gtag('consent','default',{
       ad_user_data:'denied',
       ad_personalization:'denied',
@@ -26,8 +25,10 @@
   <!-- End Google Tag Manager -->
 
   <title>Fruit Story · Exotic Fresh Organic Fruits in South India</title>
-  <meta name="description" content="Direct-to-consumer export-grade fruits. Order via WhatsApp or call. Fresh imports + regional premium fruits with strict quality checks." />
+  <meta name="description" content="Direct-to-consumer export-grade fruits. Order via WhatsApp or call. Fresh imports + premium regional fruits with strict quality checks." />
   <link rel="canonical" href="https://fruitstory.org/" />
+  <link rel="alternate" href="https://fruitstory.org/" hreflang="en-in">
+  <link rel="alternate" href="https://fruitstory.org/" hreflang="x-default">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -43,19 +44,52 @@
   <meta name="twitter:description" content="Export-grade fruits delivered fresh. Order via WhatsApp or call." />
   <meta name="twitter:image" content="https://fruitstory.org/assets/og-cover.jpg" />
 
+  <link rel="preload" as="image" href="/assets/og-cover.jpg">
   <link rel="stylesheet" href="./styles.css"/>
   <link rel="icon" href="./assets/logo.png"/>
 
-  <!-- Structured Data: Organization -->
+  <!-- Structured Data: Organization (with legalName) -->
   <script type="application/ld+json">
     {
       "@context":"https://schema.org",
       "@type":"Organization",
       "name":"Fruit Story",
+      "legalName":"Swara Ascent IMPEX",
       "url":"https://fruitstory.org/",
       "logo":"https://fruitstory.org/assets/logo.png",
       "sameAs":["https://www.instagram.com/Fruitstory.co/"],
       "contactPoint":[{"@type":"ContactPoint","telephone":"+91-9790976381","contactType":"customer service","areaServed":"IN"}]
+    }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"How do I place an order?",
+         "acceptedAnswer":{"@type":"Answer","text":"Tap the WhatsApp button, share your list, and we confirm availability, price, and a delivery slot."}},
+        {"@type":"Question","name":"What areas do you deliver?",
+         "acceptedAnswer":{"@type":"Answer","text":"We deliver across major neighborhoods in South Indian metros. Message us on WhatsApp for your location."}},
+        {"@type":"Question","name":"Are the fruits export-grade?",
+         "acceptedAnswer":{"@type":"Answer","text":"Yes—imports from world-class farms and regional export-grade fruits with 100% quality checks."}}
+      ]
+    }
+  </script>
+
+  <!-- (Optional) Structured Data: Website + SearchAction -->
+  <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"WebSite",
+      "name":"Fruit Story",
+      "url":"https://fruitstory.org/",
+      "potentialAction":{
+        "@type":"SearchAction",
+        "target":"https://fruitstory.org/products.html?q={search_term_string}",
+        "query-input":"required name=search_term_string"
+      }
     }
   </script>
 </head>
@@ -97,8 +131,6 @@
            href="/w/?utm_source=homepage&utm_medium=button&utm_campaign=order&loc=hero&m=Hi%20Fruit%20Story%2C%20I%20want%20to%20order%20fruits."
            target="_blank" rel="noopener">Order on WhatsApp</a>
         <a class="btn" href="tel:+919790976381">Call +919790976381</a>
-
-        <!-- Instagram IG-style button -->
         <a class="btn-ig" target="_blank" rel="noopener" href="https://instagram.com/Fruitstory.co" aria-label="Follow Fruit Story on Instagram">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <radialGradient id="igGrad" cx="0" cy="1" r="1">
@@ -113,7 +145,6 @@
           Instagram @Fruitstory.co
         </a>
       </div>
-
       <div class="badges" style="margin-top:18px">
         <span class="badge">Quality Focus</span>
         <span class="badge">100% Quality Checks</span>
@@ -181,7 +212,6 @@
                target="_blank" rel="noopener">+91-9600785855</a>
           </li>
           <li>Contact number: <a href="tel:+919790976381">+91-9790976381</a></li>
-          <li>Swara Ascent IMPEX</li>
           <li>Instagram: <a target="_blank" rel="noopener" href="https://instagram.com/Fruitstory.co">Fruitstory.co</a></li>
         </ul>
         <div class="actions">
@@ -200,6 +230,13 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <section class="container section" id="faq">
+    <h2>FAQs</h2>
+    <details><summary>How do I order?</summary><p>Tap WhatsApp, send your list, we confirm availability, price, and a delivery slot.</p></details>
+    <details><summary>Do you deliver today?</summary><p>Usually within 24–48 hours, depending on inventory and your location.</p></details>
+    <details><summary>Are the fruits organic?</summary><p>We curate organic and residue-controlled lots; each batch passes quality checks.</p></details>
   </section>
 
   <footer class="footer">

@@ -1,19 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-  <!-- Consent defaults MUST be before GTM -->
+  <!-- Consent defaults BEFORE GTM -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
-    // Analytics allowed; ads off by default
     gtag('consent','default',{
-      ad_user_data:'denied',
-      ad_personalization:'denied',
-      ad_storage:'denied',
-      analytics_storage:'granted'
+      ad_user_data:'denied', ad_personalization:'denied', ad_storage:'denied', analytics_storage:'granted'
     });
   </script>
 
@@ -43,6 +38,18 @@
   <meta name="twitter:description" content="Export-grade fruits delivered fresh. Order via WhatsApp or call." />
   <meta name="twitter:image" content="https://fruitstory.org/assets/og-cover.jpg" />
 
+  <!-- Breadcrumbs JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"item":{"@id":"https://fruitstory.org/","name":"Home"}},
+      {"@type":"ListItem","position":2,"item":{"@id":"https://fruitstory.org/products.html","name":"Catalog"}}
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="./styles.css"/>
   <link rel="icon" href="./assets/logo.png"/>
 
@@ -60,7 +67,10 @@
   <header class="container nav">
     <div class="brand">
       <img src="./assets/logo.png" alt="Fruit Story logo"/>
-      <div><div style="font-weight:700;">Fruit Story</div><div class="small">Swara Ascent IMPEX</div></div>
+      <div>
+        <div style="font-weight:700;">Fruit Story</div>
+        <div class="small">Swara Ascent IMPEX</div>
+      </div>
     </div>
     <nav class="navlinks">
       <a href="./index.html">Home</a>
@@ -72,7 +82,11 @@
   </header>
 
   <section class="container section">
-    <h1 style="margin:0 0 8px">Catalog</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumbs">
+      <a href="/">Home</a> › <span>Catalog</span>
+    </nav>
+
+    <h1 style="margin:8px 0">Catalog</h1>
     <p class="small">Orders only via call or WhatsApp. Pricing is indicative; final quote confirmed on order.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin:12px 0">
       <input id="search" class="input" placeholder="Search fruits, e.g., mango, blueberry, dragon..."/>
@@ -98,7 +112,6 @@
       <div class="small">© Fruit Story · Swara Ascent IMPEX</div>
       <div class="small">
         Orders via call/WhatsApp only ·
-        <!-- Use the /w bridge with UTMs so GA4 sees attribution -->
         <a href="/w/?utm_source=products&utm_medium=link&utm_campaign=order&loc=footer&m=Hi%20Fruit%20Story%2C%20I%20want%20to%20order%20fruits."
            target="_blank" rel="noopener">Start WhatsApp</a>
       </div>
@@ -106,13 +119,12 @@
     </div>
   </footer>
 
-  <!-- Build Product ItemList JSON-LD from live catalog (safer at end of body) -->
+  <!-- Build Product ItemList JSON-LD from live catalog -->
   <script>
   (async ()=>{
     try {
       const r = await fetch('/api/catalog',{cache:'no-store'});
       const items = await r.json();
-
       const itemList = items.map((p,i)=>{
         const product = {
           "@type":"Product",
@@ -132,12 +144,9 @@
         }
         return { "@type":"ListItem", "position": i+1, "item": product };
       });
-
       const ld = { "@context":"https://schema.org", "@type":"ItemList", "itemListElement": itemList };
       document.getElementById('catalog-ld').textContent = JSON.stringify(ld);
-    } catch(e) {
-      /* optional: console.warn('LD build failed', e); */
-    }
+    } catch(e) { /* optional: console.warn(e) */ }
   })();
   </script>
 </body>

@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /w/
 Sitemap: https://fruitstory.org/sitemap.xml
