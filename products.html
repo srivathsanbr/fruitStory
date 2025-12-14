@@ -5,78 +5,74 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Catalog · Fruit Story</title>
   <meta name="description" content="Shop Fruit Story fruits. Filter by grade (Medigrade / Premium / Clean) and type." />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="./assets/logo.png" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="canonical" href="https://fruitstory.org/products.html" />
 </head>
-
 <body>
-  <div class="container">
-    <header class="nav">
-      <a class="brand" href="/">
-        <img src="/assets/logo.png" alt="Fruit Story logo" />
-        <div>
-          <div style="font-weight:800;letter-spacing:.2px">Fruit Story</div>
-          <div class="small">Swara Ascent IMPEX</div>
-        </div>
-      </a>
-
-      <nav class="navlinks">
-        <a href="/">Home</a>
-        <a href="/medigrade.html">Medigrade</a>
-        <a href="/products.html">Catalog</a>
-        <a href="/about.html">About</a>
-        <a href="/#contact">Contact</a>
-      </nav>
-    </header>
-
-    <section class="section" style="padding-top:14px">
-      <h1 style="margin:0 0 8px 0">Catalog</h1>
-      <p class="small" style="margin-top:0">
-        Orders only via call or WhatsApp. Pricing is indicative; final quote confirmed on order.
-      </p>
-
-      <div class="filters">
-        <input id="search" class="input" placeholder="Search fruits (name, origin, description)..." />
-
-        <select id="grade" class="select">
-          <option value="">All Grades</option>
-          <option value="medigrade">MEDIGRADE™</option>
-          <option value="premium">Premium Grade</option>
-          <option value="clean">Clean Grade</option>
-        </select>
-
-        <select id="type" class="select">
-          <option value="">All Types</option>
-          <option value="import">Imports</option>
-          <option value="regional">Regional</option>
-          <option value="organic">Organic</option>
-        </select>
-
-        <select id="sort" class="select">
-          <option value="">Sort</option>
-          <option value="name-asc">Name A→Z</option>
-          <option value="name-desc">Name Z→A</option>
-          <option value="price-asc">Price Low→High</option>
-          <option value="price-desc">Price High→Low</option>
-        </select>
-      </div>
-
-      <div class="small" style="margin-top:10px">
-        Tip: share <code>/products.html?grade=medigrade</code> for Medigrade-only shopping.
-      </div>
-    </section>
-
-    <section class="section" style="padding-top:10px">
-      <div id="grid" class="products"></div>
-    </section>
-  </div>
-
-  <footer class="footer">
-    <div class="container">
-      <div>© Fruit Story · Swara Ascent IMPEX</div>
-      <div class="small">Orders via call/WhatsApp only · <a href="/w/">Start WhatsApp</a> · Instagram: <a href="https://instagram.com/fruitstory.co" target="_blank" rel="noreferrer">@fruitstory.co</a></div>
+<header class="container nav">
+  <a class="brand" href="./index.html">
+    <img src="./assets/logo.png" alt="Fruit Story logo" />
+    <div>
+      <div class="name">Fruit Story</div>
+      <div class="sub">Swara Ascent IMPEX</div>
     </div>
-  </footer>
+  </a>
+  <nav class="navlinks">
+    <a class="" href="./index.html">Home</a>
+    <a class="" href="./medigrade.html">Medigrade</a>
+    <a class="active" href="./products.html">Catalog</a>
+    <a class="" href="./about.html">About</a>
+    <a class="" href="./index.html#contact">Contact</a>
+  </nav>
+</header>
+<main class="container">
+  <section class="section">
+    <h1 style="margin:0 0 8px">Catalog</h1>
+    <p class="small" style="margin-top:0">
+      Tip: Share <code>/products.html?grade=medigrade</code> for Medigrade-only shopping.
+    </p>
 
-  <script src="/js/products.js"></script>
+    <div class="filters">
+      <input id="search" class="input" placeholder="Search fruits (name, origin, description)..." />
+
+      <select id="grade" class="select">
+        <option value="">All Grades</option>
+        <option value="medigrade">MEDIGRADE™</option>
+        <option value="premium">Premium Grade</option>
+        <option value="clean">Clean Grade</option>
+      </select>
+
+      <select id="type" class="select">
+        <option value="">All Types</option>
+        <option value="import">Imports</option>
+        <option value="regional">Regional</option>
+        <option value="organic">Organic</option>
+      </select>
+
+      <select id="sort" class="select">
+        <option value="">Sort</option>
+        <option value="name-asc">Name A→Z</option>
+        <option value="name-desc">Name Z→A</option>
+        <option value="price-asc">Price Low→High</option>
+        <option value="price-desc">Price High→Low</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:10px">
+    <div id="grid" class="products"></div>
+  </section>
+</main>
+
+<script src="./js/products.js"></script>
+<footer class="footer">
+  <div class="container footer-row">
+    <div>© Fruit Story · Swara Ascent IMPEX</div>
+    <div>Orders via call/WhatsApp only · <a href="./w/">Start WhatsApp</a> · <a href="tel:+919790976381">Call +91-9790976381</a></div>
+    <div>Instagram: <a href="https://instagram.com/Fruitstory.co" target="_blank" rel="noreferrer">Fruitstory.co</a></div>
+  </div>
+</footer>
+<script src="./js/main.js"></script>
 </body>
 </html>

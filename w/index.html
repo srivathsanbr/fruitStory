@@ -1,84 +1,19 @@
-<html><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="Order exotic, premium fruits in Chennai: Japanese Melons, Korean Pears, Dragon Fruit, Berries &amp; more. Same‑day/next‑day delivery. Freshly sourced imports by FruitStory." name="description"/><link href="https://fruitstory.org/w/index.html" rel="canonical"/><meta content="website" property="og:type"/><meta content="FruitStory" property="og:site_name"/><meta content="Redirecting… | FruitStory Chennai" property="og:title"/><meta content="Order exotic, premium fruits in Chennai: Japanese Melons, Korean Pears, Dragon Fruit, Berries &amp; more. Same‑day/next‑day delivery. Freshly sourced imports by FruitStory." property="og:description"/><meta content="https://fruitstory.org/w/index.html" property="og:url"/><meta content="en_IN" property="og:locale"/><meta content="https://fruitstory.org" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="Redirecting… | FruitStory Chennai" name="twitter:title"/><meta content="Order exotic, premium fruits in Chennai: Japanese Melons, Korean Pears, Dragon Fruit, Berries &amp; more. Same‑day/next‑day delivery. Freshly sourced imports by FruitStory." name="twitter:description"/><meta content="https://fruitstory.org" name="twitter:image"/><link href="/favicon.ico" rel="icon" type="image/x-icon"/><link href="/favicon-32x32.png" rel="icon" type="image/png"/><link href="/apple-touch-icon.png" rel="apple-touch-icon" type="image/png"/><link href="/site.webmanifest" rel="manifest"/><link crossorigin="True" href="https://fonts.gstatic.com" rel="preconnect"/><script type="application/ld+json">[
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "W",
-        "item": "https://fruitstory.org/w/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Index",
-        "item": "https://fruitstory.org/w/index.html"
-      }
-    ]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "FruitStory",
-    "url": "https://fruitstory.org/",
-    "logo": "https://fruitstory.org",
-    "sameAs": [
-      "https://www.instagram.com/fruitstory.in/"
-    ]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "url": "https://fruitstory.org/",
-    "name": "FruitStory",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://fruitstory.org/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FoodEstablishment",
-    "name": "FruitStory",
-    "image": [
-      "https://fruitstory.org"
-    ],
-    "url": "https://fruitstory.org/",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Chennai",
-      "addressRegion": "TN",
-      "addressCountry": "IN"
-    },
-    "areaServed": "Chennai",
-    "servesCuisine": "Fruits",
-    "priceRange": "₹₹",
-    "telephone": "+91-97909-76381"
-  }
-]</script></head><body><!DOCTYPE html>
-
-<meta charset="utf-8"/>
-<title>Redirecting… | FruitStory Chennai</title>
-<script>
-(function(){
-  window.dataLayer = window.dataLayer || [];
-  const p = new URLSearchParams(location.search);
-  const msg = p.get('m') || 'Hi Fruit Story, I want to order fruits.';
-  const dest = 'https://wa.me/919600785855?text='+encodeURIComponent(msg);
-
-  // Log an event so GA4/GTM captures the campaign/UTM BEFORE redirect
-  window.dataLayer.push({
-    event: 'whatsapp_redirect',
-    source: p.get('utm_source'),
-    medium: p.get('utm_medium'),
-    campaign: p.get('utm_campaign'),
-    loc: p.get('loc') || 'unknown'
-  });
-
-  setTimeout(()=>location.replace(dest), 100);
-})();
-</script>
-<body>Redirecting to WhatsApp…</body>
-</body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WhatsApp Redirect · Fruit Story</title>
+  <meta name="robots" content="noindex" />
+</head>
+<body>
+  <script>
+    const u = new URL(window.location.href);
+    const m = u.searchParams.get("m") || "Hi Fruit Story, I want to order fruits.";
+    // Update number here if needed:
+    const phone = "919600785855";
+    const url = "https://wa.me/" + phone + "?text=" + m;
+    window.location.replace(url);
+  </script>
+</body>
+</html>

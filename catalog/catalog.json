@@ -1,11 +1,57 @@
-{
-  "id": "alp-mango-class1",
-  "name": "Alphonso Mango (Class 1)",
-  "price": 499,
-  "unit": "/kg",
-  "type": "regional",
-  "grade": "medigrade",
-  "origin": "Ratnagiri, India",
-  "img": "",
-  "description": "Sweet, aromatic premium Alphonso."
-}
+[
+  {
+    "id": "jpn-musk-melon",
+    "name": "Japanese Musk Melon",
+    "price": 2999,
+    "unit": "/pc",
+    "type": "import",
+    "grade": "medigrade",
+    "origin": "Japan",
+    "img": "./assets/medigrade-hero.jpg",
+    "description": "Clinically screened batch for sensitive nutrition needs. Limited weekly slots."
+  },
+  {
+    "id": "kor-pear",
+    "name": "Korean Pear",
+    "price": 799,
+    "unit": "/pc",
+    "type": "import",
+    "grade": "medigrade",
+    "origin": "Korea",
+    "img": "./assets/lab-hero.jpg",
+    "description": "NABL-tested batch; clearance-first release; controlled handling."
+  },
+  {
+    "id": "blueberries",
+    "name": "Blueberries (Imported)",
+    "price": 699,
+    "unit": "/box",
+    "type": "import",
+    "grade": "premium",
+    "origin": "Peru/USA (seasonal)",
+    "img": "./assets/lab-hero.jpg",
+    "description": "Premium grade with strict batch checks and freshness control."
+  },
+  {
+    "id": "dragonfruit-red",
+    "name": "Red Dragon Fruit",
+    "price": 249,
+    "unit": "/pc",
+    "type": "regional",
+    "grade": "premium",
+    "origin": "India",
+    "img": "./assets/medigrade-hero.jpg",
+    "description": "Export-grade regional produce. Enhanced assessment & sorting."
+  },
+  {
+    "id": "organic-banana",
+    "name": "Organic Banana",
+    "price": 99,
+    "unit": "/dozen",
+    "type": "organic",
+    "grade": "clean",
+    "origin": "Tamil Nadu, India",
+    "img": "./assets/lab-hero.jpg",
+    "description": "Clean handling and basic assessment for offline-preference buyers."
+  }
+]
