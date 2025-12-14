@@ -1,7 +1,11 @@
-[
-  {"id":"alp-mango-class1","name":"Alphonso Mango (Class 1)","price":499,"unit":"/kg","type":"regional","origin":"Ratnagiri, India","img":"","description":"Sweet, aromatic premium Alphonso. Limited seasonal lots."},
-  {"id":"blueberry-chile-box","name":"Blueberries","price":799,"unit":"/box (125g)","type":"import","origin":"Chile / Peru (seasonal)","img":"","description":"Firm, high-brix berries — great for desserts & smoothies."},
-  {"id":"dragonfruit-vietnam-red","name":"Dragon Fruit (Red Pulp)","price":349,"unit":"/piece","type":"import","origin":"Vietnam","img":"","description":"Vibrant red flesh, mildly sweet — antioxidant rich."},
-  {"id":"yell-ban-nendran","name":"Banana Nendran","price":79,"unit":"/dozen","type":"regional","origin":"Kerala, India","img":"","description":"Popular regional variety, perfect for chips & steaming."},
-  {"id":"organic-apple-gala","name":"Organic Apple Gala","price":299,"unit":"/kg","type":"organic","origin":"Himachal, India","img":"","description":"Crisp, naturally sweet, certified organic."}
-]
+{
+  "id": "alp-mango-class1",
+  "name": "Alphonso Mango (Class 1)",
+  "price": 499,
+  "unit": "/kg",
+  "type": "regional",
+  "grade": "medigrade",
+  "origin": "Ratnagiri, India",
+  "img": "",
+  "description": "Sweet, aromatic premium Alphonso."
+}
