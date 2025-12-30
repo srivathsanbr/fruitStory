@@ -1,90 +1,46 @@
 [
   {
-    "id": "jpn-musk-melon",
+    "id": "jp-musk-melon",
     "name": "Japanese Musk Melon",
+    "grade": "medigrade",
+    "type": "imports",
+    "origin": "Japan",
     "price": 2999,
     "unit": "/pc",
-    "type": "imports",
-    "grade": "medigrade",
-    "origin": "Japan",
-    "img": "./assets/hero.jpg",
-    "description": "Clinically screened batch for sensitive nutrition needs. Limited weekly slots."
+    "img": "assets/col-medigrade.jpg",
+    "note": "Limited weekly batch \u00b7 Lab cleared"
   },
   {
-    "id": "kor-pear",
+    "id": "kr-pear",
     "name": "Korean Pear",
+    "grade": "medigrade",
+    "type": "imports",
+    "origin": "Korea",
     "price": 799,
     "unit": "/pc",
-    "type": "imports",
-    "grade": "medigrade",
-    "origin": "Korea",
-    "img": "./assets/col-imports.jpg",
-    "description": "NABL-tested batch; clearance-first release; controlled handling."
+    "img": "assets/col-medigrade.jpg",
+    "note": "Clinically screened"
   },
   {
     "id": "blueberries",
     "name": "Blueberries (Imported)",
+    "grade": "premium",
+    "type": "berries",
+    "origin": "Imported",
     "price": 699,
     "unit": "/box",
-    "type": "berries",
-    "grade": "premium",
-    "origin": "Peru/USA (seasonal)",
-    "img": "./assets/col-berries.jpg",
-    "description": "Premium grade with strict batch checks and freshness control."
+    "img": "assets/col-premium.jpg",
+    "note": "Fresh batches"
   },
   {
-    "id": "strawberries",
-    "name": "Strawberries (Seasonal)",
-    "price": 499,
-    "unit": "/box",
-    "type": "berries",
-    "grade": "premium",
-    "origin": "India/USA (seasonal)",
-    "img": "./assets/col-berries.jpg",
-    "description": "Hand-sorted for freshness. Limited seasonal availability."
-  },
-  {
-    "id": "dragonfruit-red",
+    "id": "dragon-red",
     "name": "Red Dragon Fruit",
+    "grade": "clean",
+    "type": "clean",
+    "origin": "India",
     "price": 249,
     "unit": "/pc",
-    "type": "regional",
-    "grade": "premium",
-    "origin": "India",
-    "img": "./assets/col-premium.jpg",
-    "description": "Export-grade regional produce. Enhanced assessment & sorting."
-  },
-  {
-    "id": "organic-banana",
-    "name": "Organic Banana",
-    "price": 99,
-    "unit": "/dozen",
-    "type": "regional",
-    "grade": "clean",
-    "origin": "Tamil Nadu, India",
-    "img": "./assets/col-clean.jpg",
-    "description": "Clean handling and basic assessment for everyday nutrition."
-  },
-  {
-    "id": "avocado",
-    "name": "Avocado",
-    "price": 299,
-    "unit": "/pc",
-    "type": "imports",
-    "grade": "premium",
-    "origin": "Kenya/Peru (seasonal)",
-    "img": "./assets/col-imports.jpg",
-    "description": "Creamy and fresh, sourced for quality."
-  },
-  {
-    "id": "kiwi",
-    "name": "Kiwi (Green)",
-    "price": 199,
-    "unit": "/pc",
-    "type": "imports",
-    "grade": "premium",
-    "origin": "New Zealand/Italy (seasonal)",
-    "img": "./assets/col-imports.jpg",
-    "description": "High vitamin C. Stored with care."
+    "img": "assets/col-clean.jpg",
+    "note": "Clean handling"
   }
 ]

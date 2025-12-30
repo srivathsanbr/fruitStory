@@ -1,5 +1,4 @@
 /fruitStory/*  /:splat  301
-/catalog      /products.html  301
-/products     /products.html  301
-/medigrade    /medigrade.html 301
-/about        /about.html     301
+/catalog /products.html 301
+/products /products.html 301
+/medigrade /medigrade.html 301

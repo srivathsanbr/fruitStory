@@ -1,13 +1,13 @@
 {
   "name": "Fruit Story",
-  "short_name": "Fruit Story",
-  "start_url": "/",
+  "short_name": "FruitStory",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#fbfaf6",
-  "theme_color": "#fbfaf6",
+  "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/assets/logo.png",
+      "src": "./assets/logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }

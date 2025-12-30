@@ -1,20 +1,16 @@
-# Fruit Story — MEDIGRADE™ (storefront-style)
-
-Complete static storefront-style website:
-- announcement bar
-- search/wishlist/cart icons
-- hero + sections + galleries
-- data-driven products
-- WhatsApp checkout
-
+# Fruit Story — Anicham-like UX/UI (Medigrade)
 ## Run locally
-```bash
-python -m http.server 8000
-```
-Open: http://localhost:8000
+If JSON doesn't load on file://, run:
+python3 -m http.server 8000
+Open http://localhost:8000/
 
-## Update links
-Edit `data/site.json` to change Instagram / WhatsApp / announcements.
+## Edit content
+catalog/site.json  -> phone/whatsapp/announcement/instagram
+catalog/catalog.json -> products
 
-## Update products
-Edit `data/catalog.json`.
+## Where the “graphics/animations” are
+assets/mesh.jpg + assets/grain.png (background)
+floating blobs + sticky marquee
+scroll reveal + stagger (IntersectionObserver)
+magnetic buttons + hover zoom
+cursor glow (desktop)

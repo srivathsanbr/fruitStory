@@ -3,22 +3,25 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Page not found · Fruit Story</title>
+  <title>404 · Fruit Story</title>
   <link rel="icon" href="./assets/logo.png"/>
   <link rel="stylesheet" href="./styles.css"/>
 </head>
 <body>
-  <div class="container section">
-    <div class="tile">
-      <h1 style="margin:0 0 10px">404 — Page not found</h1>
-      <p class="muted">The page you’re looking for isn’t available.</p>
-      <div class="btnrow">
-        <a class="btn dark" href="./index.html">Go to Home</a>
-        <a class="btn" href="./products.html">Open Catalog</a>
-        <a class="btn" href="./medigrade.html">Medigrade</a>
-        <a class="btn" href="./about.html">About</a>
-      </div>
-    </div>
+  <div class="bgWrap" aria-hidden="true">
+    <div class="bgMesh"></div><div class="blob b1"></div><div class="blob b2"></div><div class="bgGrain"></div>
   </div>
+  <main class="container section">
+    <div class="tile reveal in"><div class="pad">
+      <h1 style="margin:0 0 10px; letter-spacing:-.02em">404 — Page not found</h1>
+      <p class="muted" style="margin:0 0 16px; line-height:1.6">The page you’re looking for doesn’t exist. Use the buttons below to continue.</p>
+      <div class="btnrow">
+        <a class="btn dark magnetic" href="./index.html">Home</a>
+        <a class="btn magnetic" href="./products.html">Catalog</a>
+        <a class="btn magnetic" href="./medigrade.html">Medigrade</a>
+      </div>
+    </div></div>
+  </main>
+  <script src="./js/app.js"></script>
 </body>
 </html>

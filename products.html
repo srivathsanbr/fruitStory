@@ -3,112 +3,44 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Catalog · Fruit Story</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <meta name="description" content="Browse Fruit Story fruits & collections. Medigrade™ clinically screened, lab-verified fruits for unmatched purity and safety."/>
+  <title>Fruit Story · Medigrade</title>
   <link rel="icon" href="./assets/logo.png"/>
+  <link rel="manifest" href="./site.webmanifest"/>
   <link rel="stylesheet" href="./styles.css"/>
 </head>
 <body>
-<div class="announce"><div class="container"><div class="bar" id="announceBar"></div></div></div>
-
+<div class="bgWrap" aria-hidden="true">
+  <div class="bgMesh"></div><div class="blob b1"></div><div class="blob b2"></div><div class="bgGrain"></div>
+</div>
+<div class="announce"><div class="bar"><div class="container"><div id="announceBar"></div></div></div></div>
 <header class="header">
   <div class="container">
     <div class="row">
       <a class="brand" href="./index.html">
         <img src="./assets/logo.png" alt="Fruit Story logo"/>
-        <div>
-          <div class="name">Fruit Story</div>
-          <div class="sub">Swara Ascent IMPEX</div>
-        </div>
+        <div><div class="name">Fruit Story</div><div class="sub">Swara Ascent IMPEX</div></div>
       </a>
       <nav class="navlinks">
-        <a class="active" href="./index.html">Home</a>
-        <a href="#collections">Collections</a>
+        <a href="./index.html" class="">Home</a>
         <a href="./products.html" class="active">Catalog</a>
-        <a href="./about.html">About</a>
-        <a href="./medigrade.html">Medigrade</a>
-        <a href="#contact">Contact</a>
+        <a href="./medigrade.html" class="">Medigrade</a>
+        <a href="./about.html" class="">About</a>
+        <a href="./contact.html" class="">Contact</a>
       </nav>
       <div class="iconbar">
-        <button class="iconbtn mag" id="btnSearch" aria-label="Search">🔎</button>
-        <a class="iconbtn mag" href="https://instagram.com/fruitstory.co" target="_blank" rel="noreferrer" aria-label="Instagram">📷</a>
-        <button class="iconbtn mag" id="btnWishlist" aria-label="Wishlist">♡<span class="badge" id="wishCount">0</span></button>
-        <button class="iconbtn mag" id="btnCart" aria-label="Cart">🛒<span class="badge" id="cartCount">0</span></button>
+        <button class="iconbtn" id="btnSearch" aria-label="Search">🔎</button>
+        <a class="iconbtn" href="https://instagram.com/Fruitstory.co" target="_blank" rel="noreferrer" aria-label="Instagram">📷</a>
+        <button class="iconbtn" id="btnWishlist" aria-label="Wishlist">♡<span class="badge" id="wishCount">0</span></button>
+        <button class="iconbtn" id="btnCart" aria-label="Cart">🛒<span class="badge" id="cartCount">0</span></button>
       </div>
     </div>
   </div>
 </header>
 
-<main class="container section reveal" style="padding-top:24px">
-  <div class="sectionTitle">
-    <div>
-      <h1 style="margin:0">Catalog</h1>
-      <p class="muted" style="margin:6px 0 0">Filter by collection, search, and add to wishlist/cart.</p>
-    </div>
-    <div class="searchRow">
-      <input id="catalogSearch" class="input" placeholder="Search fruits…" />
-      <select id="collectionFilter" class="select"></select>
-    </div>
-  </div>
-
-  <div id="catalogGrid" class="gallery stagger"></div>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <div class="cols">
-      <div>
-        <div style="display:flex;align-items:center;gap:12px">
-          <img src="./assets/logo.png" alt="Fruit Story logo" style="width:46px;height:46px;border-radius:14px"/>
-          <div>
-            <div style="font-weight:900">Fruit Story</div>
-            <div class="small">{legal}</div>
-          </div>
-        </div>
-        <div class="small" style="margin-top:10px">{tagline}</div>
-        <div class="btnrow" style="margin-top:12px">
-          <a class="btn primary" href="./products.html">Shop Picks</a>
-          <a class="btn brand" href="{insta}" target="_blank" rel="noreferrer">Instagram</a>
-        </div>
-      </div>
-      <div>
-        <h4>Policies</h4>
-        <div class="small"><a href="./about.html">About</a></div>
-        <div class="small"><a href="./privacy.html">Privacy Policy</a></div>
-        <div class="small"><a href="./shipping.html">Shipping Policy</a></div>
-        <div class="small"><a href="./terms.html">Terms of Service</a></div>
-        <div class="small"><a href="./contact.html">Contact</a></div>
-      </div>
-      <div>
-        <h4>Let’s get in touch</h4>
-        <div class="small">Call: <a href="tel:{phone.replace(' ','')}">{phone}</a></div>
-        <div class="small">WhatsApp: <a href="https://wa.me/{whatsapp}?text=Hi%20Fruit%20Story%2C%20I%20want%20to%20order%20fruits.">Start chat</a></div>
-        <div class="small">Location: {location}</div>
-        <hr class="sep"/>
-        <div class="small">Newsletter</div>
-        <div style="display:flex; gap:10px; margin-top:8px">
-          <input id="newsletterEmail" placeholder="Email address" style="flex:1; padding:12px; border-radius:999px; border:1px solid var(--line)"/>
-          <button class="btn" id="btnSubscribe">Subscribe</button>
-        </div>
-        <div class="small" id="subMsg" style="margin-top:8px; display:none">Thanks! We’ll ping you when the next batch drops.</div>
-      </div>
-    </div>
-    <hr class="sep"/>
-    <div class="small">© Fruit Story 2025 · {legal}</div>
-  </div>
-</footer>
-
 <div class="overlay" id="overlay"></div>
 
-<!-- Search Drawer -->
-<aside class="drawer" id="searchDrawer" aria-hidden="true">
-  <div class="drawerHeader">
-    <b>Search</b>
-    <button class="iconbtn mag" id="closeSearch" aria-label="Close search">✕</button>
-  </div>
+<aside class="drawer" id="searchDrawer">
+  <div class="drawerHeader"><b>Search</b><button class="iconbtn" id="closeSearch">✕</button></div>
   <div class="drawerBody">
     <input id="searchInput" style="width:100%; padding:12px 12px; border-radius:16px; border:1px solid var(--line)" placeholder="Search fruits (name, origin, grade)..." />
     <div style="height:12px"></div>
@@ -116,12 +48,8 @@
   </div>
 </aside>
 
-<!-- Cart Drawer -->
-<aside class="drawer" id="cartDrawer" aria-hidden="true">
-  <div class="drawerHeader">
-    <b>Shopping Cart</b>
-    <button class="iconbtn mag" id="closeCart" aria-label="Close cart">✕</button>
-  </div>
+<aside class="drawer" id="cartDrawer">
+  <div class="drawerHeader"><b>Shopping Cart</b><button class="iconbtn" id="closeCart">✕</button></div>
   <div class="drawerBody">
     <div id="cartItems"></div>
     <div class="small" id="cartEmpty" style="display:none">Your cart is currently empty.</div>
@@ -131,17 +59,63 @@
   </div>
   <div class="drawerFooter">
     <div style="display:flex; justify-content:space-between; align-items:center; gap:10px">
-      <div class="small">Subtotal</div>
-      <div><b id="cartSubtotal">₹ 0</b></div>
+      <div class="small">Subtotal</div><div><b id="cartSubtotal">₹ 0</b></div>
     </div>
     <div class="btnrow">
-      <button class="btn dark" id="btnCheckout" style="flex:1">Checkout on WhatsApp</button>
-      <a class="btn" href="tel:+91-9790976381" style="flex:1; text-align:center">Call</a>
+      <button class="btn dark magnetic" id="btnCheckout" style="flex:1">Checkout on WhatsApp</button>
+      <a class="btn magnetic" href="tel:+919790976381" style="flex:1; text-align:center">Call</a>
     </div>
-    <div class="small" style="margin-top:8px">Medigrade availability is batch-dependent and released only after lab clearance.</div>
   </div>
 </aside>
 
+<main class="container">
+  <section class="section reveal">
+    <h1 style="margin:0 0 8px; letter-spacing:-.02em">Catalog</h1>
+    <div class="small">Filter by grade and checkout via WhatsApp.</div>
+    <div class="tile reveal" style="margin-top:14px"><div class="pad" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+      <button class="btn primary magnetic" data-filter="all">All</button>
+      <button class="btn magnetic" data-filter="medigrade">MEDIGRADE™</button>
+      <button class="btn magnetic" data-filter="premium">Premium</button>
+      <button class="btn magnetic" data-filter="clean">Clean</button>
+      <button class="btn magnetic" data-filter="berries">Berries</button>
+      <button class="btn magnetic" data-filter="imports">Imports</button>
+      <div style="flex:1"></div>
+      <button class="btn brand magnetic" id="openSearchInline">Search</button>
+    </div></div>
+    <div style="height:14px"></div>
+    <div class="grid cols-4 stagger" id="productsGrid"></div>
+  </section>
+</main>
+<script>
+document.addEventListener("DOMContentLoaded", ()=>{
+  const grid = document.getElementById("productsGrid");
+  document.getElementById("openSearchInline")?.addEventListener("click", ()=>document.getElementById("btnSearch")?.click());
+
+  function applyFilter(key){
+    const all = (window.state && window.state.catalog) ? window.state.catalog : [];
+    let items = all;
+    if(key && key !== "all"){
+      items = all.filter(x => String(x.grade||"").toLowerCase()===key || String(x.type||"").toLowerCase()===key);
+    }
+    grid.innerHTML = items.map(window.productCard).join("");
+    grid.querySelectorAll("button[data-add]").forEach((b)=>b.addEventListener("click", ()=>window.addToCart(b.dataset.add)));
+    grid.querySelectorAll("button[data-buy]").forEach((b)=>b.addEventListener("click", ()=>{
+      const item = window.state.catalog.find(x=>x.id===b.dataset.buy);
+      const msg = `Hi Fruit Story, I want to order:\n${item.name}\nGrade: ${window.gradeLabel(item.grade)}\nPlease confirm availability & price.`;
+      window.open(window.waLink(msg), "_blank");
+    }));
+    grid.querySelectorAll("button[data-wish]").forEach((b)=>b.addEventListener("click", ()=>window.toggleWish(b.dataset.wish)));
+  }
+  document.querySelectorAll("button[data-filter]").forEach(btn=>btn.addEventListener("click", ()=>applyFilter(btn.dataset.filter)));
+  const wait = setInterval(()=>{ if(window.state?.catalog?.length){ clearInterval(wait); applyFilter("all"); } }, 120);
+});
+</script>
+
+<footer class="footer">
+  <div class="container">
+    <div class="small">© Fruit Story · Swara Ascent IMPEX · Instagram: <a href="https://instagram.com/Fruitstory.co" target="_blank" rel="noreferrer">@Fruitstory.co</a></div>
+  </div>
+</footer>
+<a class="fab" href="./w/" aria-label="WhatsApp"><span class="bub"></span> WhatsApp Order</a>
 <script src="./js/app.js"></script>
-</body>
-</html>
+</body></html>
