@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="heroSvg" viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lab-verified safe fruits illustration">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bbf7d0" stop-opacity="0.85"/>
+      <stop offset="0.55" stop-color="#bae6fd" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#fed7aa" stop-opacity="0.65"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#16a34a"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="18" y="18" width="484" height="364" rx="30" fill="url(#g1)" opacity="0.55"/>
+  <rect x="28" y="28" width="464" height="344" rx="26" fill="#ffffff" opacity="0.62"/>
+  <rect x="28" y="28" width="464" height="344" rx="26" fill="none" stroke="rgba(17,24,39,0.12)" stroke-width="1"/>
+
+  <g class="heroOrbit" opacity="0.85">
+    <circle cx="260" cy="190" r="6" fill="#16a34a"/>
+    <circle cx="260" cy="190" r="4" fill="#0ea5e9" opacity="0.9" transform="translate(40,-40)"/>
+    <circle cx="260" cy="190" r="4" fill="#f59e0b" opacity="0.9" transform="translate(-52,30)"/>
+  </g>
+
+  <g transform="translate(310,110)">
+    <path d="M48 16 L68 36" stroke="rgba(11,18,32,0.75)" stroke-width="6" stroke-linecap="round"/>
+    <rect x="60" y="32" width="18" height="56" rx="8" fill="rgba(11,18,32,0.85)"/>
+    <path d="M52 86 C38 90 24 108 24 128" stroke="rgba(11,18,32,0.75)" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M18 128 H92" stroke="rgba(11,18,32,0.65)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M30 144 H86" stroke="rgba(11,18,32,0.55)" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="44" cy="78" r="14" fill="rgba(14,165,233,0.18)" stroke="rgba(11,18,32,0.25)" stroke-width="2"/>
+  </g>
+
+  <g transform="translate(90,120)">
+    <path d="M88 28 C78 8 94 -2 110 6 C100 14 98 24 98 34 Z" fill="#16a34a" opacity="0.85"/>
+    <path d="M110 40 C74 40 46 66 46 110 C46 152 70 198 110 198 C150 198 174 152 174 110 C174 66 146 40 110 40 Z"
+          fill="#ef4444" opacity="0.92"/>
+    <path d="M110 54 C84 54 64 74 64 106 C64 144 82 178 110 178 C138 178 156 144 156 106 C156 74 136 54 110 54 Z"
+          fill="rgba(255,255,255,0.12)"/>
+
+    <g transform="translate(142,74)" class="heroPulse">
+      <path d="M44 8 L70 18 V44 C70 68 56 86 44 92 C32 86 18 68 18 44 V18 Z"
+            fill="url(#g2)" opacity="0.92"/>
+      <path d="M34 50 L42 58 L58 40" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <g transform="translate(68,300)" opacity="0.9">
+    <path d="M0 0 H384" stroke="rgba(17,24,39,0.12)" stroke-width="2"/>
+    <g transform="translate(0,16)">
+      <rect x="0" y="0" width="118" height="44" rx="16" fill="rgba(22,163,74,0.12)" stroke="rgba(22,163,74,0.22)"/>
+      <text x="16" y="28" font-size="13" font-family="ui-sans-serif, system-ui" fill="rgba(11,18,32,0.78)">Pesticides</text>
+      <circle cx="96" cy="22" r="10" fill="rgba(22,163,74,0.16)" stroke="rgba(22,163,74,0.25)"/>
+      <path d="M92 22 L95 25 L101 17" stroke="#166534" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(132,16)">
+      <rect x="0" y="0" width="118" height="44" rx="16" fill="rgba(14,165,233,0.12)" stroke="rgba(14,165,233,0.22)"/>
+      <text x="16" y="28" font-size="13" font-family="ui-sans-serif, system-ui" fill="rgba(11,18,32,0.78)">Heavy metals</text>
+      <circle cx="96" cy="22" r="10" fill="rgba(14,165,233,0.16)" stroke="rgba(14,165,233,0.25)"/>
+      <path d="M92 22 L95 25 L101 17" stroke="#075985" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(264,16)">
+      <rect x="0" y="0" width="118" height="44" rx="16" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.22)"/>
+      <text x="16" y="28" font-size="13" font-family="ui-sans-serif, system-ui" fill="rgba(11,18,32,0.78)">Toxins</text>
+      <circle cx="96" cy="22" r="10" fill="rgba(245,158,11,0.16)" stroke="rgba(245,158,11,0.25)"/>
+      <path d="M92 22 L95 25 L101 17" stroke="#92400e" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <path class="heroDash" d="M48 66 C132 22 208 20 260 58 C316 98 404 92 472 48"
+        fill="none" stroke="rgba(11,18,32,0.18)" stroke-width="2"/>
+</svg>
