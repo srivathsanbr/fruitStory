@@ -1,143 +1,358 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Fruit Story · MEDIGRADE™ Verified Fruits in Chennai</title>
-  <meta name="description" content="MEDIGRADE™ — Fruit Story’s highest safety standard. Clinically screened, nutrient-retained, and NABL lab-verified fruits with clearance-first weekly release and strict traceability." />
-  <link rel="icon" href="./assets/logo.png" />
-  <link rel="stylesheet" href="./styles.css" />
-  <link rel="canonical" href="https://fruitstory.org/" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Fruit Story · MEDIGRADE™ Verified Fruits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <meta name="description" content="MEDIGRADE™ — Fruit Story’s highest safety standard. Clinically screened, nutrient-retained, and lab-verified fruit batches with clearance-first weekly release and strict traceability."/>
+  <link rel="icon" href="./assets/logo.png"/>
+  <link rel="stylesheet" href="./styles.css"/>
 </head>
 <body>
-<header class="container nav">
-  <a class="brand" href="./index.html">
-    <img src="./assets/logo.png" alt="Fruit Story logo" />
-    <div>
-      <div class="name">Fruit Story</div>
-      <div class="sub">Swara Ascent IMPEX</div>
-    </div>
-  </a>
-  <nav class="navlinks">
-    <a class="active" href="./index.html">Home</a>
-    <a class="" href="./medigrade.html">Medigrade</a>
-    <a class="" href="./products.html">Catalog</a>
-    <a class="" href="./about.html">About</a>
-    <a class="" href="./index.html#contact">Contact</a>
-  </nav>
-</header>
-<main class="container">
-  <section class="hero">
-    <div class="hero-top">
-      <div class="kicker">MEDIGRADE™ — Fruit Story’s Highest Safety Standard</div>
-      <h1 class="h-title">Clinical-level testing for <span style="color:var(--brand)">family-safe</span> fruits.</h1>
-      <p class="lead">
-        Medigrade is Fruit Story’s clinically screened, nutrient-retained, and lab-verified fruit category crafted for individuals with specific health and nutritional needs.
-        Each batch is released in limited weekly quantities only after laboratory clearance.
-      </p>
-      <div class="chips">
-        <span class="chip">NABL-certified labs</span>
-        <span class="chip">Every batch tested</span>
-        <span class="chip">Micro-batch screening</span>
-        <span class="chip">Online-only traceability</span>
-      </div>
-      <div class="btnrow">
-        <a class="btn primary" href="./products.html?grade=medigrade">Shop Medigrade</a>
-        <a class="btn brand" href="./medigrade.html">See testing protocol</a>
-        <a class="btn warn" href="./w/?m=Hi%20Fruit%20Story%2C%20I%20want%20to%20order%20MEDIGRADE%20fruits.%20Please%20share%20this%20week%E2%80%99s%20batch%20slots.">Order on WhatsApp</a>
-      </div>
-      <div class="small" style="margin-top:10px">* Availability and outcomes are batch-dependent and released only after clearance.</div>
-    </div>
+<div class="announce"><div class="container"><div class="bar" id="announceBar" data-items="Limited weekly Medigrade batches · NABL-certified lab verified · Pesticide & heavy-metal screened · Order via WhatsApp / Call"></div></div></div>
 
-    <div class="hero-media">
-      <img src="./assets/medigrade-hero.jpg" alt="Medigrade testing and handling" />
-      <div class="hero-card">
-        <div class="pill ok">⭐ Medigrade safety highlights</div>
-        <ul style="margin:0; padding-left:18px">
-          <li>No pesticides detected</li>
-          <li>No heavy metals</li>
-          <li>No toxic contaminants</li>
-          <li>Microbial safety test (clinical thresholds)</li>
-          <li>Strict hygienic handling & controlled storage</li>
-          <li>Additional microorganism screening (when required)</li>
-        </ul>
-        <div class="btnrow">
-          <a class="btn primary" href="./products.html?grade=medigrade">View Medigrade fruits</a>
-          <a class="btn" href="./about.html">About Fruit Story</a>
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <a class="brand" href="./index.html">
+        <img src="./assets/logo.png" alt="Fruit Story logo"/>
+        <div>
+          <div class="name">Fruit Story</div>
+          <div class="sub">Swara Ascent IMPEX</div>
+        </div>
+      </a>
+      <nav class="navlinks">
+        <a class="active" href="./index.html">Home</a>
+        <a href="#collections">Collections</a>
+        <a href="./products.html">Catalog</a>
+        <a href="./about.html">About</a>
+        <a href="./medigrade.html">Medigrade</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="iconbar">
+        <button class="iconbtn mag" id="btnSearch" aria-label="Search">🔎</button>
+        <a class="iconbtn mag" href="https://instagram.com/fruitstory.co" target="_blank" rel="noreferrer" aria-label="Instagram">📷</a>
+        <button class="iconbtn mag" id="btnWishlist" aria-label="Wishlist">♡<span class="badge" id="wishCount">0</span></button>
+        <button class="iconbtn" id="btnCart" aria-label="Cart">🛒<span class="badge" id="cartCount">0</span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- Search Drawer -->
+<aside class="drawer" id="searchDrawer" aria-hidden="true">
+  <div class="drawerHeader">
+    <b>Search</b>
+    <button class="iconbtn" id="closeSearch" aria-label="Close search">✕</button>
+  </div>
+  <div class="drawerBody">
+    <input id="searchInput" style="width:100%; padding:12px 12px; border-radius:16px; border:1px solid var(--line)" placeholder="Search fruits (name, origin, grade)..." />
+    <div style="height:12px"></div>
+    <div id="searchResults" class="grid cols-3"></div>
+  </div>
+</aside>
+
+<!-- Cart Drawer -->
+<aside class="drawer" id="cartDrawer" aria-hidden="true">
+  <div class="drawerHeader">
+    <b>Shopping Cart</b>
+    <button class="iconbtn" id="closeCart" aria-label="Close cart">✕</button>
+  </div>
+  <div class="drawerBody">
+    <div id="cartItems"></div>
+    <div class="small" id="cartEmpty" style="display:none">Your cart is currently empty.</div>
+    <div style="height:12px"></div>
+    <label class="small">Note for seller</label>
+    <textarea id="cartNote" style="width:100%; min-height:90px; padding:12px; border-radius:16px; border:1px solid var(--line)"></textarea>
+  </div>
+  <div class="drawerFooter">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:10px">
+      <div class="small">Subtotal</div>
+      <div><b id="cartSubtotal">₹ 0</b></div>
+    </div>
+    <div class="btnrow">
+      <button class="btn dark" id="btnCheckout" style="flex:1">Checkout on WhatsApp</button>
+      <a class="btn" href="tel:+91-9790976381" style="flex:1; text-align:center">Call</a>
+    </div>
+    <div class="small" style="margin-top:8px">Medigrade availability is batch-dependent and released only after lab clearance.</div>
+  </div>
+</aside>
+
+<!-- Disclaimer Modal -->
+<div class="modal" id="disclaimer">
+  <div class="modalCard">
+    <h3>Quick note</h3>
+    <p class="small">MEDIGRADE™ descriptions talk about screening & verification. This information is not medical advice. Please consult your doctor for medical decisions.</p>
+    <div class="btnrow">
+      <button class="btn primary" id="acceptDisclaimer">I understand</button>
+      <a class="btn" href="https://instagram.com/fruitstory.co" target="_blank" rel="noreferrer">Follow updates</a>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+
+  
+<section class="hero reveal">
+  <div class="mesh"></div>
+  <div class="grain"></div>
+  <div class="content">
+    <div>
+      <div class="kicker"><span class="dot"></span><span>MEDIGRADE™ — Fruit Story’s Highest Safety Standard</span></div>
+      <div class="h1">Clinically screened, <span class="grad">lab‑verified</span> fruits.</div>
+      <p class="lead">Medigrade is Fruit Story’s clinically screened, nutrient-retained, and lab-verified fruit category crafted for individuals with specific health and nutritional needs. Each batch is released in limited weekly quantities after laboratory clearance.</p>
+      <div class="btnrow">
+        <a class="btn primary shine mag" href="./medigrade.html">Explore Medigrade</a>
+        <a class="btn dark shine mag" href="./products.html">Browse Catalog</a>
+        <a class="btn shine mag" href="./w/">Order on WhatsApp</a>
+      </div>
+      <div style="height:14px"></div>
+      <div class="featureRow">
+        <div class="feature"><img src="./assets/icon-shield.svg" alt=""><div><b>No pesticides detected</b><span>Strict screening</span></div></div>
+        <div class="feature"><img src="./assets/icon-lab.svg" alt=""><div><b>NABL lab verified</b><span>Batch clearance</span></div></div>
+        <div class="feature"><img src="./assets/icon-microbe.svg" alt=""><div><b>Microbial safety</b><span>Clinical thresholds</span></div></div>
+        <div class="feature"><img src="./assets/icon-leaf.svg" alt=""><div><b>Max nutrition</b><span>Clean handling</span></div></div>
+        <div class="feature"><img src="./assets/icon-shield.svg" alt=""><div><b>Traceability</b><span>Online only</span></div></div>
+      </div>
+    </div>
+    <div class="heroCard">
+      <h3>Who it’s designed for</h3>
+      <ul>
+        <li>Pregnant mothers & children</li>
+        <li>Individuals under medical care (diabetic, cardiac, oncology, IVF)</li>
+        <li>Immunity-focused individuals</li>
+        <li>Health-conscious families</li>
+      </ul>
+      <div style="height:10px"></div>
+      <div class="pill green">EVERY BATCH TESTED</div>
+      <div style="height:8px"></div>
+      <div class="pill blue">LIMITED WEEKLY AVAILABILITY</div>
+      <div style="height:12px"></div>
+      <p class="small">Medigrade is available exclusively through our online platform to maintain strict quality control and traceability.</p>
+    </div>
+  </div>
+</section>
+
+
+  <section id="collections" class="section reveal">
+    <div class="sectionTitle">
+      <h2>Collections</h2>
+      <div class="small">Choose a category — we’ll show matching picks (Medigrade / Premium / Clean).</div>
+    </div>
+    <div class="grid cols-3" id="collectionGrid"></div>
+  </section>
+
+  <section class="section">
+    <div class="sectionTitle">
+      <h2>Why families choose MEDIGRADE™</h2>
+      <div class="small">Built for pregnancy, children, medical care (diabetic/cardiac/oncology/IVF), immunity focus, and health-conscious homes.</div>
+    </div>
+    <div class="iconRow" reveal>
+      <div class="icon"><div class="dot">✓</div><div><b>Every batch tested</b><div class="small">Never random sampling</div></div></div>
+      <div class="icon"><div class="dot">🔬</div><div><b>NABL-certified labs</b><div class="small">Stricter screening</div></div></div>
+      <div class="icon"><div class="dot">🧾</div><div><b>Traceability</b><div class="small">Online-only control</div></div></div>
+      <div class="icon"><div class="dot">🧼</div><div><b>Hygienic handling</b><div class="small">Controlled storage</div></div></div>
+      <div class="icon"><div class="dot">🧪</div><div><b>Micro-batch testing</b><div class="small">When accuracy is needed</div></div></div>
+    </div>
+  </section>
+
+  <section id="picks" class="section reveal">
+    <div class="sectionTitle">
+      <h2>Products Picks</h2>
+      <div class="small">Tap “Add to cart” and checkout on WhatsApp. Prices shown are indicative.</div>
+    </div>
+    <div class="grid cols-4" id="picksGrid"></div>
+  </section>
+
+  <section class="section">
+    <div class="aboutBand" reveal>
+      <div>
+        <div class="kicker">At Fruit Story</div>
+        <div class="quote"><b>“Fresh” is not enough. We also verify.</b> Medigrade batches are clinically screened, lab verified, and released only after clearance — so you can order with confidence.</div>
+      </div>
+      <div class="box">
+        <div style="font-weight:900">MEDIGRADE™ is designed for</div>
+        <div class="small" style="margin-top:8px">Pregnant mothers · Children · Individuals under medical care · People with medical conditions (diabetic/cardiac/oncology/IVF) · Immunity-focused individuals · Health-conscious families</div>
+        <div class="btnrow" style="margin-top:12px">
+          <a class="btn primary" href="./medigrade.html">See testing list</a>
+          <button class="btn" id="btnAskSlots">Ask weekly slots</button>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="why" class="section">
-    <div class="grid grid-3">
-      <div class="card">
-        <div class="pill info">🔬 Clearance-first</div>
-        <div><b>Every batch tested — never random sampling.</b></div>
-        <p class="small">Medigrade batches are released only after lab clearance to keep safety uncompromised.</p>
+  <section class="section" id="reviews" class="reveal">
+    <div class="sectionTitle">
+      <h2>Reviews</h2>
+      <div class="small">Sample tiles — replace with your screenshots anytime.</div>
+    </div>
+    <div class="gallery stagger">
+      <img src="./assets/review-1.jpg" alt="review"/>
+<img src="./assets/review-2.jpg" alt="review"/>
+<img src="./assets/review-3.jpg" alt="review"/>
+<img src="./assets/review-4.jpg" alt="review"/>
+<img src="./assets/review-5.jpg" alt="review"/>
+<img src="./assets/review-6.jpg" alt="review"/>
+<img src="./assets/review-7.jpg" alt="review"/>
+<img src="./assets/review-8.jpg" alt="review"/>
+    </div>
+  </section>
+
+  <section class="section" id="instagram" class="reveal">
+    <div class="sectionTitle">
+      <h2>Follow us on Instagram</h2>
+      <div class="small">Tag <b>@Fruitstory.co</b> in your photos for a chance to be featured.</div>
+    </div>
+    <div class="gallery stagger">
+      <img src="./assets/ig-1.jpg" alt="Instagram"/>
+<img src="./assets/ig-2.jpg" alt="Instagram"/>
+<img src="./assets/ig-3.jpg" alt="Instagram"/>
+<img src="./assets/ig-4.jpg" alt="Instagram"/>
+<img src="./assets/ig-5.jpg" alt="Instagram"/>
+<img src="./assets/ig-6.jpg" alt="Instagram"/>
+<img src="./assets/ig-7.jpg" alt="Instagram"/>
+<img src="./assets/ig-8.jpg" alt="Instagram"/>
+    </div>
+    <div class="btnrow" style="margin-top:14px">
+      <a class="btn brand" href="{insta}" target="_blank" rel="noreferrer">Open Instagram</a>
+    </div>
+  </section>
+
+  <section class="section" id="contact" class="reveal">
+    <div class="sectionTitle">
+      <h2>Let’s get in touch</h2>
+      <div class="small">Orders are taken via WhatsApp or call to maintain tight quality control.</div>
+    </div>
+    <div class="grid cols-3">
+      <div class="tile">
+        <img src="./assets/col-medigrade.jpg" alt="Medigrade"/>
+        <div class="pad">
+          <div class="title">Order MEDIGRADE™</div>
+          <div class="small">Ask current week’s cleared batch slots.</div>
+          <div class="btnrow">
+            <button class="btn dark" id="btnOrderMedigrade">WhatsApp</button>
+            <a class="btn" href="tel:{phone.replace(' ','')}">Call</a>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <div class="pill info">🧾 Traceability</div>
-        <div><b>Online-only for strict quality control.</b></div>
-        <p class="small">We maintain consistent handling, storage and tracking through a controlled channel.</p>
+      <div class="tile">
+        <img src="./assets/col-premium.jpg" alt="Premium"/>
+        <div class="pad">
+          <div class="title">Premium Grade</div>
+          <div class="small">High quality with standard batch checks.</div>
+          <div class="btnrow"><a class="btn primary" href="./products.html">Browse picks</a></div>
+        </div>
       </div>
-      <div class="card">
-        <div class="pill info">🌿 Designed for sensitive needs</div>
-        <div><b>Built for families and health-focused nutrition.</b></div>
-        <p class="small">Pregnancy, kids, medical care, IVF, diabetic/cardiac/oncology and immunity focus.</p>
+      <div class="tile">
+        <img src="./assets/col-clean.jpg" alt="Clean"/>
+        <div class="pad">
+          <div class="title">Clean Grade</div>
+          <div class="small">Clean handling for everyday nutrition.</div>
+          <div class="btnrow"><button class="btn" id="btnOpenSearch">Search fruits</button></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <h2 style="margin:0 0 10px">Fruit Story – Grade Comparison</h2>
-    <div class="tablewrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Check</th>
-            <th>MEDIGRADE™</th>
-            <th>Premium Grade</th>
-            <th>Clean Grade</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Baseline NABL Lab Testing</td><td>✅ Yes</td><td>✅ Yes</td><td>✅ Yes</td></tr>
-          <tr><td>Every Batch Sample Checked</td><td>✅ Yes</td><td>✅ Yes</td><td>✅ Yes</td></tr>
-          <tr><td>Fruits sold only after Lab Clearance</td><td>✅ Yes</td><td>✅ Yes</td><td>✅ Yes</td></tr>
-          <tr><td>Advanced toxic contaminant screening</td><td>✅ Yes</td><td>❌ No</td><td>❌ No</td></tr>
-          <tr><td>Micro-batch sample testing</td><td>✅ Yes</td><td>❌ No</td><td>❌ No</td></tr>
-          <tr><td>Additional microorganism screening (when required)</td><td>✅ Yes</td><td>❌ No</td><td>❌ No</td></tr>
-          <tr><td>Hygienic handling</td><td>Highest standard</td><td>High standard</td><td>Clean handling</td></tr>
-          <tr><td>Sorting & assessment</td><td>Medical-grade assessment</td><td>Enhanced assessment</td><td>Basic assessment</td></tr>
-          <tr><td>Availability</td><td>Limited · Online-only</td><td>Available anytime (Online)</td><td>Walk-in stores</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="btnrow">
-      <a class="btn primary" href="./products.html?grade=medigrade">Shop Medigrade</a>
-      <a class="btn" href="./medigrade.html">Learn more</a>
-    </div>
-  </section>
-
-  <section id="contact" class="section">
-    <div class="card">
-      <h2 style="margin:0 0 8px">Contact & Orders</h2>
-      <p class="small" style="margin-top:0">Orders via call/WhatsApp only. Medigrade availability depends on weekly batch clearance.</p>
-      <div class="btnrow">
-        <a class="btn warn" href="./w/?m=Hi%20Fruit%20Story%2C%20I%20want%20to%20order%20MEDIGRADE%20fruits.%20Please%20share%20available%20options%20and%20this%20week%E2%80%99s%20batch%20slots.">Start WhatsApp</a>
-        <a class="btn" href="tel:+919790976381">Call +91-9790976381</a>
-      </div>
-    </div>
-  </section>
 </main>
+
+
+<section class="container section reveal" id="picks">
+  <div class="sectionTitle">
+    <h2>Product Picks</h2>
+    <div class="small">Popular picks — tap to add to cart or buy on WhatsApp.</div>
+  </div>
+  <div class="hScroll" id="picksScroll"></div>
+</section>
+<script>
+(function(){
+  const host = document.getElementById("picksScroll");
+  if(!host) return;
+  const wait = setInterval(()=>{
+    if(window.state && window.state.catalog && window.state.catalog.length){
+      clearInterval(wait);
+      const picks = window.state.catalog.slice(0,10);
+      host.innerHTML = picks.map(p=>`
+        <div class="hItem card">
+          <div class="img"><img src="./assets/${p.grade==='medigrade'?'col-medigrade.jpg':'col-premium.jpg'}" alt=""></div>
+          <div class="body">
+            <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start">
+              <div>
+                <h4>${p.name}</h4>
+                <div class="small">₹ ${p.price} ${p.unit||''}</div>
+              </div>
+              <div class="pill ${p.grade==='medigrade'?'green':'blue'}">${p.grade==='medigrade'?'MEDIGRADE™':'Premium'}</div>
+            </div>
+            <div style="height:10px"></div>
+            <div class="btnrow">
+              <button class="btn primary shine mag" data-add="${p.id}">Add</button>
+              <button class="btn dark shine mag" data-buy="${p.id}">Buy</button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+      host.querySelectorAll("button[data-add]").forEach(b=>b.addEventListener("click",()=>window.addToCart(b.dataset.add)));
+      host.querySelectorAll("button[data-buy]").forEach(b=>b.addEventListener("click",()=>{
+        const item = window.state.catalog.find(x=>x.id===b.dataset.buy);
+        if(!item) return;
+        const msg = "Hi Fruit Story, I want to order: " + item.name + "
+Grade: " + window.gradeLabel(item.grade) + "
+Please confirm availability & price.";
+        window.open(window.waLink(msg), "_blank");
+      }));
+    }
+  }, 140);
+})();
+</script>
+
 <footer class="footer">
-  <div class="container footer-row">
-    <div>© Fruit Story · Swara Ascent IMPEX</div>
-    <div>Orders via call/WhatsApp only · <a href="./w/">Start WhatsApp</a> · <a href="tel:+919790976381">Call +91-9790976381</a></div>
-    <div>Instagram: <a href="https://instagram.com/Fruitstory.co" target="_blank" rel="noreferrer">Fruitstory.co</a></div>
+  <div class="container">
+    <div class="cols">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="./assets/logo.png" alt="Fruit Story logo" style="width:46px;height:46px;border-radius:14px"/>
+          <div>
+            <div style="font-weight:900">Fruit Story</div>
+            <div class="small">{legal}</div>
+          </div>
+        </div>
+        <div class="small" style="margin-top:10px">{tagline}</div>
+        <div class="btnrow" style="margin-top:12px">
+          <a class="btn primary" href="./products.html">Shop Picks</a>
+          <a class="btn brand" href="{insta}" target="_blank" rel="noreferrer">Instagram</a>
+        </div>
+      </div>
+      <div>
+        <h4>Policies</h4>
+        <div class="small"><a href="./about.html">About</a></div>
+        <div class="small"><a href="./privacy.html">Privacy Policy</a></div>
+        <div class="small"><a href="./shipping.html">Shipping Policy</a></div>
+        <div class="small"><a href="./terms.html">Terms of Service</a></div>
+        <div class="small"><a href="./contact.html">Contact</a></div>
+      </div>
+      <div>
+        <h4>Let’s get in touch</h4>
+        <div class="small">Call: <a href="tel:{phone.replace(' ','')}">{phone}</a></div>
+        <div class="small">WhatsApp: <a href="https://wa.me/{whatsapp}?text=Hi%20Fruit%20Story%2C%20I%20want%20to%20order%20fruits.">Start chat</a></div>
+        <div class="small">Location: {location}</div>
+        <hr class="sep"/>
+        <div class="small">Newsletter</div>
+        <div style="display:flex; gap:10px; margin-top:8px">
+          <input id="newsletterEmail" placeholder="Email address" style="flex:1; padding:12px; border-radius:999px; border:1px solid var(--line)"/>
+          <button class="btn" id="btnSubscribe">Subscribe</button>
+        </div>
+        <div class="small" id="subMsg" style="margin-top:8px; display:none">Thanks! We’ll ping you when the next batch drops.</div>
+      </div>
+    </div>
+    <hr class="sep"/>
+    <div class="small">© Fruit Story 2025 · {legal}</div>
   </div>
 </footer>
-<script src="./js/main.js"></script>
-</body>
-</html>
+
+<script src="./js/app.js"></script>
+</body></html>

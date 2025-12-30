@@ -1,19 +1,12 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>WhatsApp Redirect · Fruit Story</title>
-  <meta name="robots" content="noindex" />
-</head>
-<body>
-  <script>
-    const u = new URL(window.location.href);
-    const m = u.searchParams.get("m") || "Hi Fruit Story, I want to order fruits.";
-    // Update number here if needed:
-    const phone = "919600785855";
-    const url = "https://wa.me/" + phone + "?text=" + m;
-    window.location.replace(url);
-  </script>
-</body>
-</html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Redirecting…</title>
+<meta http-equiv="refresh" content="0; url=https://wa.me/919600785855?text=Hi%20Fruit%20Story,%20I%20want%20to%20order%20fruits.">
+</head><body>
+Redirecting to WhatsApp…
+<script>
+  const url = "https://wa.me/919600785855?text=Hi Fruit Story, I want to order fruits.";
+  location.replace(url);
+</script>
+</body></html>

@@ -1,0 +1,27 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/fruitStory/*"
+  to = "/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/catalog"
+  to = "/products.html"
+  status = 301
+
+[[redirects]]
+  from = "/products"
+  to = "/products.html"
+  status = 301
+
+[[redirects]]
+  from = "/medigrade"
+  to = "/medigrade.html"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 301

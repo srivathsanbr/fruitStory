@@ -1,0 +1,47 @@
+{
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/fruitStory",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fruitStory/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/medigrade",
+      "destination": "/medigrade.html",
+      "permanent": true
+    },
+    {
+      "source": "/catalog",
+      "destination": "/products.html",
+      "permanent": true
+    },
+    {
+      "source": "/products",
+      "destination": "/products.html",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

@@ -1,48 +1,102 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Privacy · Fruit Story</title>
-  <meta name="description" content="Fruit Story privacy policy for website visitors and customers." />
-  <link rel="icon" href="./assets/logo.png" />
-  <link rel="stylesheet" href="./styles.css" />
-  <link rel="canonical" href="https://fruitstory.org/privacy.html" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Privacy Policy · Fruit Story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <meta name="description" content="Privacy Policy · Fruit Story"/>
+  <link rel="icon" href="../assets/logo.png"/>
+  <link rel="stylesheet" href="../styles.css"/>
 </head>
 <body>
-<header class="container nav">
-  <a class="brand" href="./index.html">
-    <img src="./assets/logo.png" alt="Fruit Story logo" />
-    <div>
-      <div class="name">Fruit Story</div>
-      <div class="sub">Swara Ascent IMPEX</div>
+<div class="announce"><div class="container"><div class="bar" id="announceBar"></div></div></div>
+
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <a class="brand" href="../index.html">
+        <img src="../assets/logo.png" alt="Fruit Story logo"/>
+        <div><div class="name">Fruit Story</div><div class="sub">Swara Ascent IMPEX</div></div>
+      </a>
+      <nav class="navlinks">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#collections">Collections</a>
+        <a href="../index.html#picks">Picks</a>
+        <a class="active" href="./about.html">About</a>
+        <a href="./medigrade.html">Medigrade</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="iconbar">
+        <button class="iconbtn mag" id="btnSearch" aria-label="Search">🔎</button>
+        <a class="iconbtn mag" href="https://instagram.com/fruitstory.co" target="_blank" rel="noreferrer" aria-label="Instagram">📷</a>
+        <button class="iconbtn mag" id="btnWishlist" aria-label="Wishlist">♡<span class="badge" id="wishCount">0</span></button>
+        <button class="iconbtn mag" id="btnCart" aria-label="Cart">🛒<span class="badge" id="cartCount">0</span></button>
+      </div>
     </div>
-  </a>
-  <nav class="navlinks">
-    <a class="" href="./index.html">Home</a>
-    <a class="" href="./medigrade.html">Medigrade</a>
-    <a class="" href="./products.html">Catalog</a>
-    <a class="" href="./about.html">About</a>
-    <a class="" href="./index.html#contact">Contact</a>
-  </nav>
+  </div>
 </header>
-<main class="container">
-  <section class="section">
-    <h1 style="margin:0 0 12px">Privacy Policy</h1>
-    <div class="card" style="line-height:1.7">
-      <p>We collect only minimal information needed to respond to orders and inquiries (for example, your name, phone number, and delivery details shared on WhatsApp/call).</p>
-      <p>We do not sell your personal data. We may use basic analytics (e.g., Google Analytics/Tag Manager) to understand traffic and improve the website.</p>
-      <p>For any privacy concerns, contact us via WhatsApp or phone.</p>
+
+<div class="overlay" id="overlay"></div>
+
+<aside class="drawer" id="searchDrawer" aria-hidden="true">
+  <div class="drawerHeader"><b>Search</b><button class="iconbtn mag" id="closeSearch">✕</button></div>
+  <div class="drawerBody">
+    <input id="searchInput" style="width:100%; padding:12px 12px; border-radius:16px; border:1px solid var(--line)" placeholder="Search fruits..." />
+    <div style="height:12px"></div>
+    <div id="searchResults" class="grid cols-3"></div>
+  </div>
+</aside>
+
+<aside class="drawer" id="cartDrawer" aria-hidden="true">
+  <div class="drawerHeader"><b>Shopping Cart</b><button class="iconbtn mag" id="closeCart">✕</button></div>
+  <div class="drawerBody">
+    <div id="cartItems"></div>
+    <div class="small" id="cartEmpty" style="display:none">Your cart is currently empty.</div>
+    <div style="height:12px"></div>
+    <label class="small">Note for seller</label>
+    <textarea id="cartNote" style="width:100%; min-height:90px; padding:12px; border-radius:16px; border:1px solid var(--line)"></textarea>
+  </div>
+  <div class="drawerFooter">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:10px">
+      <div class="small">Subtotal</div><div><b id="cartSubtotal">₹ 0</b></div>
     </div>
+    <div class="btnrow">
+      <button class="btn dark" id="btnCheckout" style="flex:1">Checkout on WhatsApp</button>
+      <a class="btn" href="tel:+91-9790976381" style="flex:1; text-align:center">Call</a>
+    </div>
+  </div>
+</aside>
+
+<div class="modal" id="disclaimer">
+  <div class="modalCard">
+    <h3>Quick note</h3>
+    <p class="small">MEDIGRADE™ descriptions talk about screening & verification. This information is not medical advice.</p>
+    <div class="btnrow"><button class="btn primary" id="acceptDisclaimer">I understand</button></div>
+  </div>
+</div>
+
+<main class="container">
+  <section class="section reveal">
+    <div class="sectionTitle">
+      <h2>Privacy Policy</h2>
+      <div class="small"><a href="../index.html">← Back to home</a></div>
+    </div>
+    <div class="tile reveal"><div class="pad" style="white-space:pre-wrap; line-height:1.8">We collect minimal information necessary to respond to your order (e.g., name, phone number, delivery details shared over WhatsApp/call).
+
+We do not sell personal data. We may use basic analytics to understand traffic and improve the website.
+
+For privacy questions, reach us via WhatsApp or call.</div></div>
   </section>
 </main>
+
 <footer class="footer">
-  <div class="container footer-row">
-    <div>© Fruit Story · Swara Ascent IMPEX</div>
-    <div>Orders via call/WhatsApp only · <a href="./w/">Start WhatsApp</a> · <a href="tel:+919790976381">Call +91-9790976381</a></div>
-    <div>Instagram: <a href="https://instagram.com/Fruitstory.co" target="_blank" rel="noreferrer">Fruitstory.co</a></div>
+  <div class="container">
+    <div class="small">© Fruit Story 2025 · Swara Ascent IMPEX</div>
   </div>
 </footer>
-<script src="./js/main.js"></script>
-</body>
-</html>
+
+<script src="../js/app.js"></script>
+</body></html>

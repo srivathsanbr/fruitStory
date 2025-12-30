@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Admin (Local) · Fruit Story</title>
+  <meta name="description" content="Local-only editor for site.json and catalog.json. Download updated JSON and commit to GitHub."/>
+  <link rel="icon" href="./assets/logo.png"/>
+  <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+  <header class="header">
+    <div class="container row">
+      <a class="brand" href="./index.html">
+        <img src="./assets/logo.png" alt="Fruit Story logo" class="logo"/>
+        <div>
+          <div class="brandName">Fruit Story</div>
+          <div class="brandTag">Local Admin (No Uploads)</div>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="./index.html">Home</a>
+        <a href="./products.html">Catalog</a>
+        <a href="./medigrade.html">Medigrade</a>
+        <a href="./about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section reveal" style="padding-top:24px">
+    <h1 style="margin:0 0 10px">Local Admin</h1>
+    <p class="muted" style="margin:0 0 18px">
+      This editor runs fully in your browser. Edit JSON → Download → replace files inside <code>/catalog</code> and commit.
+    </p>
+
+    <div class="grid2">
+      <div class="tile">
+        <h3 style="margin:0 0 8px">Site Settings</h3>
+        <p class="muted" style="margin:0 0 10px">Edits <code>catalog/site.json</code> (WhatsApp number, Instagram, announcements, etc.)</p>
+        <textarea id="siteBox" class="textarea" spellcheck="false"></textarea>
+        <div class="btnrow" style="margin-top:10px">
+          <button class="btn" id="downloadSite">Download site.json</button>
+        </div>
+      </div>
+
+      <div class="tile">
+        <h3 style="margin:0 0 8px">Catalog</h3>
+        <p class="muted" style="margin:0 0 10px">Edits <code>catalog/catalog.json</code> (products, price, collection, grade)</p>
+        <textarea id="catBox" class="textarea" spellcheck="false"></textarea>
+        <div class="btnrow" style="margin-top:10px">
+          <button class="btn" id="downloadCatalog">Download catalog.json</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    async function loadJson(path){
+      const r = await fetch(path + "?v=" + Date.now());
+      if(!r.ok) throw new Error("Failed to load " + path);
+      return await r.json();
+    }
+    function download(name, text){
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([text], {type:"application/json"}));
+      a.download = name;
+      a.click();
+      setTimeout(()=>URL.revokeObjectURL(a.href), 500);
+    }
+
+    window.addEventListener("DOMContentLoaded", async ()=>{
+      const site = await loadJson("./catalog/site.json");
+      const cat = await loadJson("./catalog/catalog.json");
+      document.getElementById("siteBox").value = JSON.stringify(site, null, 2);
+      document.getElementById("catBox").value = JSON.stringify(cat, null, 2);
+
+      document.getElementById("downloadSite").onclick = ()=>{
+        download("site.json", document.getElementById("siteBox").value);
+      };
+      document.getElementById("downloadCatalog").onclick = ()=>{
+        download("catalog.json", document.getElementById("catBox").value);
+      };
+    });
+  </script>
+</body>
+</html>
